@@ -78,7 +78,7 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_text_to_blob(conn, "bitemporal_bool_from_ewkt") {
         eprintln!("[shim-scalars] skipping `bitemporal_bool_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "bitemporal_bool_from_text") {
+    if let Err(e) = register_text_to_blob(conn, "bitemporal_bool_from_text") {
         eprintln!("[shim-scalars] skipping `bitemporal_bool_from_text`: {e}");
     }
     if let Err(e) = register_blob_i64_to_i32(conn, "bitemporal_bool_history_at_count") {
@@ -129,7 +129,7 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_text_to_blob(conn, "bitemporal_float_from_ewkt") {
         eprintln!("[shim-scalars] skipping `bitemporal_float_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "bitemporal_float_from_text") {
+    if let Err(e) = register_text_to_blob(conn, "bitemporal_float_from_text") {
         eprintln!("[shim-scalars] skipping `bitemporal_float_from_text`: {e}");
     }
     if let Err(e) = register_blob_i64_to_i32(conn, "bitemporal_float_history_at_count") {
@@ -180,7 +180,7 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_text_to_blob(conn, "bitemporal_int_from_ewkt") {
         eprintln!("[shim-scalars] skipping `bitemporal_int_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "bitemporal_int_from_text") {
+    if let Err(e) = register_text_to_blob(conn, "bitemporal_int_from_text") {
         eprintln!("[shim-scalars] skipping `bitemporal_int_from_text`: {e}");
     }
     if let Err(e) = register_blob_i64_to_i32(conn, "bitemporal_int_history_at_count") {
@@ -231,7 +231,7 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_text_to_blob(conn, "bitemporal_text_from_ewkt") {
         eprintln!("[shim-scalars] skipping `bitemporal_text_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "bitemporal_text_from_text") {
+    if let Err(e) = register_text_to_blob(conn, "bitemporal_text_from_text") {
         eprintln!("[shim-scalars] skipping `bitemporal_text_from_text`: {e}");
     }
     if let Err(e) = register_blob_i64_to_i32(conn, "bitemporal_text_history_at_count") {
@@ -1185,16 +1185,16 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_text_to_blob(conn, "tbool_from_csv") {
         eprintln!("[shim-scalars] skipping `tbool_from_csv`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tbool_from_ewkt") {
+    if let Err(e) = register_text_to_blob(conn, "tbool_from_ewkt") {
         eprintln!("[shim-scalars] skipping `tbool_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tbool_from_mfjson") {
+    if let Err(e) = register_text_to_blob(conn, "tbool_from_mfjson") {
         eprintln!("[shim-scalars] skipping `tbool_from_mfjson`: {e}");
     }
     if let Err(e) = register_blob_to_blob(conn, "tbool_implies") {
         eprintln!("[shim-scalars] skipping `tbool_implies`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tbool_instant_from_ewkt") {
+    if let Err(e) = register_text_to_blob(conn, "tbool_instant_from_ewkt") {
         eprintln!("[shim-scalars] skipping `tbool_instant_from_ewkt`: {e}");
     }
     if let Err(e) = register_blob_to_blob(conn, "tbool_instant_n") {
@@ -1728,13 +1728,13 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_blob_to_blob(conn, "tfloat_fract") {
         eprintln!("[shim-scalars] skipping `tfloat_fract`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tfloat_from_csv") {
+    if let Err(e) = register_text_to_blob(conn, "tfloat_from_csv") {
         eprintln!("[shim-scalars] skipping `tfloat_from_csv`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tfloat_from_ewkt") {
+    if let Err(e) = register_text_to_blob(conn, "tfloat_from_ewkt") {
         eprintln!("[shim-scalars] skipping `tfloat_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tfloat_from_mfjson") {
+    if let Err(e) = register_text_to_blob(conn, "tfloat_from_mfjson") {
         eprintln!("[shim-scalars] skipping `tfloat_from_mfjson`: {e}");
     }
     if let Err(e) = register_blob_to_blob(conn, "tfloat_gaussian_smooth") {
@@ -1746,10 +1746,10 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_blob_to_blob(conn, "tfloat_insert") {
         eprintln!("[shim-scalars] skipping `tfloat_insert`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tfloat_instant_from_ewkt") {
+    if let Err(e) = register_text_to_blob(conn, "tfloat_instant_from_ewkt") {
         eprintln!("[shim-scalars] skipping `tfloat_instant_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tfloat_instant_from_mfjson") {
+    if let Err(e) = register_text_to_blob(conn, "tfloat_instant_from_mfjson") {
         eprintln!("[shim-scalars] skipping `tfloat_instant_from_mfjson`: {e}");
     }
     if let Err(e) = register_blob_to_blob(conn, "tfloat_instant_n") {
@@ -2600,7 +2600,7 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_text_to_blob(conn, "tgeompoint3d_from_ewkt") {
         eprintln!("[shim-scalars] skipping `tgeompoint3d_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tgeompoint3d_from_text") {
+    if let Err(e) = register_text_to_blob(conn, "tgeompoint3d_from_text") {
         eprintln!("[shim-scalars] skipping `tgeompoint3d_from_text`: {e}");
     }
     if let Err(e) = register_blob_to_blob(conn, "tgeompoint3d_getx") {
@@ -2885,10 +2885,10 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_blob_to_blob(conn, "tgeompoint_forecast_trajectory") {
         eprintln!("[shim-scalars] skipping `tgeompoint_forecast_trajectory`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tgeompoint_from_csv") {
+    if let Err(e) = register_text_to_blob(conn, "tgeompoint_from_csv") {
         eprintln!("[shim-scalars] skipping `tgeompoint_from_csv`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tgeompoint_from_ewkt") {
+    if let Err(e) = register_text_to_blob(conn, "tgeompoint_from_ewkt") {
         eprintln!("[shim-scalars] skipping `tgeompoint_from_ewkt`: {e}");
     }
     if let Err(e) = register_blob_to_blob(conn, "tgeompoint_from_geojson") {
@@ -2903,7 +2903,7 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_blob_to_blob(conn, "tgeompoint_from_hexewkb") {
         eprintln!("[shim-scalars] skipping `tgeompoint_from_hexewkb`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tgeompoint_from_mfjson") {
+    if let Err(e) = register_text_to_blob(conn, "tgeompoint_from_mfjson") {
         eprintln!("[shim-scalars] skipping `tgeompoint_from_mfjson`: {e}");
     }
     if let Err(e) = register_blob_to_blob(conn, "tgeompoint_from_web_mercator") {
@@ -2930,10 +2930,10 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_blob_to_f64(conn, "tgeompoint_height") {
         eprintln!("[shim-scalars] skipping `tgeompoint_height`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tgeompoint_instant_from_ewkt") {
+    if let Err(e) = register_text_to_blob(conn, "tgeompoint_instant_from_ewkt") {
         eprintln!("[shim-scalars] skipping `tgeompoint_instant_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tgeompoint_instant_from_mfjson") {
+    if let Err(e) = register_text_to_blob(conn, "tgeompoint_instant_from_mfjson") {
         eprintln!("[shim-scalars] skipping `tgeompoint_instant_from_mfjson`: {e}");
     }
     if let Err(e) = register_blob_to_f64(conn, "tgeompoint_instant_n_x") {
@@ -3467,13 +3467,13 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_blob_f64_to_blob(conn, "tint_exponential_smooth") {
         eprintln!("[shim-scalars] skipping `tint_exponential_smooth`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tint_from_csv") {
+    if let Err(e) = register_text_to_blob(conn, "tint_from_csv") {
         eprintln!("[shim-scalars] skipping `tint_from_csv`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tint_from_ewkt") {
+    if let Err(e) = register_text_to_blob(conn, "tint_from_ewkt") {
         eprintln!("[shim-scalars] skipping `tint_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tint_from_mfjson") {
+    if let Err(e) = register_text_to_blob(conn, "tint_from_mfjson") {
         eprintln!("[shim-scalars] skipping `tint_from_mfjson`: {e}");
     }
     if let Err(e) = register_blob_to_i64(conn, "tint_gcd") {
@@ -3482,10 +3482,10 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_blob_to_blob(conn, "tint_insert") {
         eprintln!("[shim-scalars] skipping `tint_insert`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tint_instant_from_ewkt") {
+    if let Err(e) = register_text_to_blob(conn, "tint_instant_from_ewkt") {
         eprintln!("[shim-scalars] skipping `tint_instant_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "tint_instant_from_mfjson") {
+    if let Err(e) = register_text_to_blob(conn, "tint_instant_from_mfjson") {
         eprintln!("[shim-scalars] skipping `tint_instant_from_mfjson`: {e}");
     }
     if let Err(e) = register_blob_to_blob(conn, "tint_instant_n") {
@@ -4334,16 +4334,16 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_text_to_blob(conn, "ttext_from_csv") {
         eprintln!("[shim-scalars] skipping `ttext_from_csv`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "ttext_from_ewkt") {
+    if let Err(e) = register_text_to_blob(conn, "ttext_from_ewkt") {
         eprintln!("[shim-scalars] skipping `ttext_from_ewkt`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "ttext_from_mfjson") {
+    if let Err(e) = register_text_to_blob(conn, "ttext_from_mfjson") {
         eprintln!("[shim-scalars] skipping `ttext_from_mfjson`: {e}");
     }
     if let Err(e) = register_blob_text_to_blob(conn, "ttext_ilike") {
         eprintln!("[shim-scalars] skipping `ttext_ilike`: {e}");
     }
-    if let Err(e) = register_blob_to_blob(conn, "ttext_instant_from_ewkt") {
+    if let Err(e) = register_text_to_blob(conn, "ttext_instant_from_ewkt") {
         eprintln!("[shim-scalars] skipping `ttext_instant_from_ewkt`: {e}");
     }
     if let Err(e) = register_blob_to_blob(conn, "ttext_instant_n") {
