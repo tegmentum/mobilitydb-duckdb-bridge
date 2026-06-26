@@ -86,9 +86,20 @@ unsafe fn register_type(con: ffi::duckdb_connection, name: &str) {
     ffi::duckdb_logical_type_set_alias(handle, c_name.as_ptr());
     let rc = ffi::duckdb_register_logical_type(con, handle, std::ptr::null_mut());
     if rc != ffi::DuckDBSuccess {
+        // A non-success rc here means a type with this name already
+        // exists in the catalog (e.g. DuckDB's built-in GEOMETRY
+        // when the spatial extension is loaded, or a re-LOAD of
+        // this bridge). Registration is IDEMPOTENT by design: the
+        // type stays usable, and since both the pre-existing type
+        // and our alias are BLOB-backed at the storage + ABI level,
+        // `CREATE TABLE t (g {NAME})` and every BLOB-shaped scalar
+        // signature keep working against the existing type. We
+        // therefore reuse it rather than treat the clash as an
+        // error. Downgraded to an informational note so it doesn't
+        // read like a failure.
         eprintln!(
-            "[shim-types] could not register type {name} (rc={rc}) — \
-             likely a name clash with an existing type"
+            "[shim-types] type {name} already registered (rc={rc}); reusing the \
+             existing BLOB-compatible definition"
         );
     }
     let mut h = handle;

@@ -2061,18 +2061,14 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_blob_to_blob(conn, "tfloat_statistics") {
         eprintln!("[shim-scalars] skipping `tfloat_statistics`: {e}");
     }
-    if let Err(e) = register_blob_to_f64(conn, "tfloat_stddev") {
-        eprintln!("[shim-scalars] skipping `tfloat_stddev`: {e}");
-    }
+    // scalar `tfloat_stddev` skipped — name also published as an aggregate; the aggregate form is registered instead (see aggregates.rs).
     if let Err(e) = register_blob_blob_to_blob(conn, "tfloat_sub") {
         eprintln!("[shim-scalars] skipping `tfloat_sub`: {e}");
     }
     if let Err(e) = register_blob_f64_to_blob(conn, "tfloat_sub_scalar") {
         eprintln!("[shim-scalars] skipping `tfloat_sub_scalar`: {e}");
     }
-    if let Err(e) = register_blob_to_f64(conn, "tfloat_sum") {
-        eprintln!("[shim-scalars] skipping `tfloat_sum`: {e}");
-    }
+    // scalar `tfloat_sum` skipped — name also published as an aggregate; the aggregate form is registered instead (see aggregates.rs).
     if let Err(e) = register_blob_to_blob(conn, "tfloat_tan") {
         eprintln!("[shim-scalars] skipping `tfloat_tan`: {e}");
     }
@@ -3716,9 +3712,7 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_blob_i64_to_blob(conn, "tint_sub_scalar") {
         eprintln!("[shim-scalars] skipping `tint_sub_scalar`: {e}");
     }
-    if let Err(e) = register_blob_to_i64(conn, "tint_sum") {
-        eprintln!("[shim-scalars] skipping `tint_sum`: {e}");
-    }
+    // scalar `tint_sum` skipped — name also published as an aggregate; the aggregate form is registered instead (see aggregates.rs).
     if let Err(e) = register_blob_to_blob(conn, "tint_tbox") {
         eprintln!("[shim-scalars] skipping `tint_tbox`: {e}");
     }
@@ -4514,7 +4508,7 @@ pub fn register_all(conn: &Connection) -> Result<()> {
     if let Err(e) = register_blob_to_f64(conn, "wgs84_to_web_mercator_y") {
         eprintln!("[shim-scalars] skipping `wgs84_to_web_mercator_y`: {e}");
     }
-    // Phase 2: 1486 names registered (69 shapes), 0 scalars deferred to Phase 3+ (0 unique shapes).
+    // Phase 2: 1483 names registered (69 shapes), 0 scalars deferred to Phase 3+ (0 unique shapes).
     Ok(())
 }
 

@@ -128,9 +128,18 @@ unsafe fn entrypoint_inner(
     // Step 7 — aggregates via raw libduckdb-sys.
     aggregates::register_all(raw_con);
 
-    // Step 8 — UDTFs still go through duckdb-rs (vtab trait).
-    table_functions::register_all(&conn)
-        .map_err(|e| -> Box<dyn Error> { format!("table function registration: {e}").into() })?;
+    // Step 8 — UDTFs via raw libduckdb-sys (DuckDB's VTab
+    // bind/init hooks are static, so we dispatch dynamically by
+    // name through the C table-function API — same pattern as
+    // aggregates).
+    table_functions::register_all(raw_con);
+
+    // Step 9 — spatial indexes. The loadable C API can't register
+    // custom index access methods (see spatial_indexes.rs); this
+    // is a documented no-op. Index-backed lookups are exposed as
+    // table functions instead.
+    spatial_indexes::register_all(&conn)
+        .map_err(|e| -> Box<dyn Error> { format!("spatial index registration: {e}").into() })?;
 
     Ok(true)
 }

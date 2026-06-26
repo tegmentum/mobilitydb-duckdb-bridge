@@ -3,21 +3,62 @@
 
 //! Spatial index registration.
 //!
-//! DuckDB has built-in ART (B-tree-ish) indexes plus an
-//! `IndexExtensionEntry` hook for extension-defined index
-//! kinds (used by the spatial extension's R-tree). Map each
-//! shim spatial-index `type_id` to a DuckDB index extension
-//! entry; SQL `CREATE INDEX … USING <name>` resolves through
-//! the catalog.
+//! ## Documented limitation (2026-06-25)
 //!
-//! Older DuckDB versions without `IndexExtensionEntry` fall
-//! back to registering an index-aware UDTF that participates
-//! in the optimizer's predicate pushdown via the bind
-//! callback.
+//! Custom index access methods (the C++ `IndexType` /
+//! `IndexExtensionEntry` registry that the in-tree `spatial`
+//! extension uses to implement its R-tree) are NOT reachable
+//! through DuckDB's stable loadable-extension C API. The C API
+//! (`duckdb.h`, the only surface a `--abi-type C_STRUCT`
+//! loadable extension may call) exposes scalar functions,
+//! aggregate functions, table functions, custom logical types,
+//! and casts — but has no `duckdb_register_index_type` (or
+//! equivalent). `CREATE INDEX … USING <name>` resolves the
+//! access-method name against an INTERNAL C++ registry that a
+//! C-ABI extension cannot extend.
+//!
+//! Consequently `CREATE INDEX … USING rtree` (postgis) /
+//! `… USING mobilitydb-strtree` (mobilitydb) cannot be honoured
+//! by this bridge. Rather than fake it — registering a no-op
+//! access method that silently builds nothing would be
+//! misleading — we leave these index names UNregistered. DuckDB
+//! then reports its own `Unknown index type: "RTREE"`, which is
+//! the truthful outcome.
+//!
+//! ## What DOES work (the intended substitute)
+//!
+//! The shim's spatial-index capability is exposed instead as
+//! TABLE FUNCTIONS (see `table_functions.rs`): MobilityDB's
+//! `kdtree_xy_within` / `kdtree_xy_nearest_k` /
+//! `interval_tree_query_overlapping` etc. perform the
+//! index-accelerated query as a UDTF the optimizer can place in
+//! the FROM clause. That path is fully wired and is the
+//! supported way to get index-backed spatial/temporal lookups
+//! from this bridge today.
+//!
+//! ## If/when DuckDB ships a C index-type API
+//!
+//! Map each shim spatial-index `type_id` to the new
+//! registration call here; the interface DB already carries the
+//! names + type_ids (listed below), so the wiring would be
+//! mechanical and shim-agnostic.
 
+use duckdb::{Connection, Result};
+
+/// No-op: custom index access methods are not registerable via
+/// the loadable C API (see module docs). Returns Ok so extension
+/// init doesn't fail; the declared index names simply remain
+/// unknown to `CREATE INDEX … USING <name>`.
+pub fn register_all(_conn: &Connection) -> Result<()> {
+    Ok(())
+}
+
+// ----------------------------------------------------------------------
+// Spatial index access methods the shim advertises (not
+// registerable via the C API — documented limitation above).
+// ----------------------------------------------------------------------
+
+// === extension: mobilitydb ===
 // index `mobilitydb-strtree` type_id=0
 // index `trajbbox` type_id=0
 // index `type_id=4001` type_id=4001
-
-// TODO: register IndexExtensionEntry per shim index,
-//       or fall back to UDTF + pushdown.

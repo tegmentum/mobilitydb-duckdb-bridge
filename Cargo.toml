@@ -24,7 +24,7 @@ datafission-functions        = { path = "../datafission/crates/functions" }
 # those APIs in its safe wrapper but the C ABI is fully
 # accessible via libduckdb-sys (a re-export of libduckdb-sys's
 # `loadable-extension` feature).
-duckdb         = { version = "~1.10504", features = ["vscalar", "loadable-extension"] }
+duckdb         = { version = "~1.10504", features = ["vscalar", "vtab", "loadable-extension"] }
 libduckdb-sys  = { version = "~1.10504", features = ["loadable-extension"] }
 
 anyhow      = "1"

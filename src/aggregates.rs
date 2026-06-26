@@ -195,17 +195,18 @@ unsafe fn register_aggregate(conn: duckdb_connection, sql_name: &str, input_ty: 
     let rc = duckdb_register_aggregate_function(conn, agg);
     duckdb_destroy_aggregate_function(&mut { agg });
     if rc != DuckDBSuccess {
-        // 5 PostGIS aggregate names clash with scalar variants
-        // (st_collect, st_union, st_clusterwithin,
-        // st_clusterdbscan, st_clusterintersecting). DuckDB
-        // rejects the registration in that case. Swallow the
-        // error so the non-clashing aggregates still register —
-        // the clashing ones fall back to the already-registered
-        // scalar form, which has the semantics the user probably
-        // wanted anyway.
+        // Scalar/aggregate name clashes (st_collect, st_union,
+        // st_clusterwithin, st_clusterdbscan,
+        // st_clusterintersecting, tfloat_sum, tint_sum, …) are
+        // resolved in favour of the AGGREGATE: scalars.rs skips
+        // any name also published as an aggregate, so this
+        // registration normally succeeds. A non-success rc here
+        // therefore means a genuine catalog conflict (e.g. a
+        // built-in DuckDB aggregate of the same name) — log and
+        // continue so the rest still register.
         eprintln!(
-            "postgis-duckdb-bridge: skipping aggregate `{sql_name}` \
-             (name already in use by a scalar; rc={rc})"
+            "[shim-aggregates] could not register aggregate `{sql_name}` (rc={rc}); \
+             a built-in of the same name may already exist"
         );
     }
 }
