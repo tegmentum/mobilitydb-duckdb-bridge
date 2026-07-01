@@ -58,29 +58,11 @@ struct AggExtraInfo {
 /// `conn` must be a valid `duckdb_connection` for the duration
 /// of this call.
 pub unsafe fn register_all(conn: duckdb_connection) {
-    register_aggregate(conn, "tbool_and_all_agg", "boolean");
-    register_aggregate(conn, "tbool_any", "boolean");
-    register_aggregate(conn, "tbool_count_false_agg", "boolean");
-    register_aggregate(conn, "tbool_count_true_agg", "boolean");
-    register_aggregate(conn, "tbool_every", "boolean");
-    register_aggregate(conn, "tbool_or_all_agg", "boolean");
     register_aggregate(conn, "tbool_temporal_and", "binary");
     register_aggregate(conn, "tand", "binary"); // alias of tbool_temporal_and
     register_aggregate(conn, "tbool_temporal_or", "binary");
     register_aggregate(conn, "tor", "binary"); // alias of tbool_temporal_or
     register_aggregate(conn, "tcbuffer_temporal_count", "binary");
-    register_aggregate(conn, "tfloat_avg", "float64");
-    register_aggregate(conn, "tfloat_avg_agg", "float64");
-    register_aggregate(conn, "tfloat_count_agg", "float64");
-    register_aggregate(conn, "tfloat_max_agg", "float64");
-    register_aggregate(conn, "tfloat_max_value_agg", "float64");
-    register_aggregate(conn, "tfloat_median_agg", "float64");
-    register_aggregate(conn, "tfloat_min_agg", "float64");
-    register_aggregate(conn, "tfloat_min_value_agg", "float64");
-    register_aggregate(conn, "tfloat_range_agg", "float64");
-    register_aggregate(conn, "tfloat_stddev", "float64");
-    register_aggregate(conn, "tfloat_stddev_agg", "float64");
-    register_aggregate(conn, "tfloat_sum", "float64");
     register_aggregate(conn, "tfloat_temporal_avg", "binary");
     register_aggregate(conn, "tavg", "binary"); // alias of tfloat_temporal_avg
     register_aggregate(conn, "tfloat_temporal_count", "binary");
@@ -91,8 +73,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_aggregate(conn, "tmin", "binary"); // alias of tfloat_temporal_min
     register_aggregate(conn, "tfloat_temporal_sum", "binary");
     register_aggregate(conn, "tsum", "binary"); // alias of tfloat_temporal_sum
-    register_aggregate(conn, "tfloat_total", "float64");
-    register_aggregate(conn, "tfloat_variance_agg", "float64");
+    register_aggregate(conn, "tfloat_total", "binary");
+    register_aggregate(conn, "tfloat_variance_agg", "binary");
     register_aggregate(conn, "tgeogpoint_temporal_count", "binary");
     register_aggregate(conn, "tgeompoint_centroid_agg", "binary");
     register_aggregate(conn, "tgeompoint_num_convoys", "binary");
@@ -101,25 +83,20 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_aggregate(conn, "tgeompoint_st_extent", "binary");
     register_aggregate(conn, "tgeompoint_temporal_centroid", "binary");
     register_aggregate(conn, "tgeompoint_temporal_count", "binary");
-    register_aggregate(conn, "tint_count_agg", "int64");
-    register_aggregate(conn, "tint_max_agg", "int64");
-    register_aggregate(conn, "tint_max_value_agg", "int64");
-    register_aggregate(conn, "tint_min_agg", "int64");
-    register_aggregate(conn, "tint_min_value_agg", "int64");
-    register_aggregate(conn, "tint_range_agg", "int64");
-    register_aggregate(conn, "tint_sum", "int64");
-    register_aggregate(conn, "tint_sum_agg", "int64");
+    register_aggregate(conn, "tint_count_agg", "binary");
+    register_aggregate(conn, "tint_max_agg", "binary");
+    register_aggregate(conn, "tint_max_value_agg", "binary");
+    register_aggregate(conn, "tint_min_agg", "binary");
+    register_aggregate(conn, "tint_min_value_agg", "binary");
+    register_aggregate(conn, "tint_range_agg", "binary");
+    register_aggregate(conn, "tint_sum_agg", "binary");
     register_aggregate(conn, "tint_temporal_max", "binary");
     register_aggregate(conn, "tint_temporal_min", "binary");
     register_aggregate(conn, "tint_temporal_sum", "binary");
     register_aggregate(conn, "tnpoint_temporal_count", "binary");
     register_aggregate(conn, "tpose_temporal_count", "binary");
-    register_aggregate(conn, "ttext_concat_agg", "text");
-    register_aggregate(conn, "ttext_count_agg", "text");
-    register_aggregate(conn, "ttext_max_agg", "text");
-    register_aggregate(conn, "ttext_min_agg", "text");
-    register_aggregate(conn, "ttext_string_agg", "text");
-    // Phase 3c: 54 canonical + 7 alias names registered.
+    register_aggregate(conn, "ttext_concat_agg", "binary");
+    // Phase 3c: 31 canonical + 7 alias names registered.
 }
 
 unsafe fn register_aggregate(conn: duckdb_connection, sql_name: &str, input_ty: &str) {

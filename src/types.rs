@@ -35,37 +35,223 @@ pub unsafe fn register_all(con: ffi::duckdb_connection) {
     if con.is_null() {
         return;
     }
-    register_type(con, "BITEMPORAL_BOOL");
-    register_type(con, "BITEMPORAL_FLOAT");
-    register_type(con, "BITEMPORAL_INT");
-    register_type(con, "BITEMPORAL_TEXT");
-    register_type(con, "DATESET");
-    register_type(con, "DATESPAN");
-    register_type(con, "DATESPANSET");
-    register_type(con, "FLOATSET");
-    register_type(con, "FLOATSPAN");
-    register_type(con, "FLOATSPANSET");
-    register_type(con, "INTSET");
-    register_type(con, "INTSPAN");
-    register_type(con, "INTSPANSET");
-    register_type(con, "STBOX");
-    register_type(con, "STBOX3D");
-    register_type(con, "TBOOL_SEQUENCE");
-    register_type(con, "TBOX");
-    register_type(con, "TCBUFFER_SEQUENCE");
-    register_type(con, "TEXTSET");
-    register_type(con, "TFLOAT_SEQUENCE");
-    register_type(con, "TGEOGPOINT_SEQUENCE");
-    register_type(con, "TGEOMETRY_SEQUENCE");
-    register_type(con, "TGEOMPOINT3D_SEQUENCE");
-    register_type(con, "TGEOMPOINT_SEQUENCE");
-    register_type(con, "TINT_SEQUENCE");
-    register_type(con, "TNPOINT_SEQUENCE");
-    register_type(con, "TPOSE_SEQUENCE");
-    register_type(con, "TSTZSET");
-    register_type(con, "TSTZSPAN");
-    register_type(con, "TSTZSPANSET");
-    register_type(con, "TTEXT_SEQUENCE");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-bool-ops/bitemporal-bool-instant",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-bool-ops/bitemporal-bool-sequence",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-float-ops/bitemporal-float-instant",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-float-ops/bitemporal-float-sequence",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-int-ops/bitemporal-int-instant",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-int-ops/bitemporal-int-sequence",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-text-ops/bitemporal-text-instant",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-text-ops/bitemporal-text-sequence",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/clustering-ops/cluster-point",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/join-ops/joined-float-pair");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-bool-pair",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-float-pair",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-int-pair",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-text-pair",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/other-indexes-ops/indexed-interval",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/other-indexes-ops/indexed-point-xy",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/other-indexes-ops/indexed-point-xyz",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/pattern-ops/crossing-info");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/pattern-ops/level-crossing-info",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/pattern-ops/peak-info");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/sequence-json-ops/sequence-json-row",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/spans-ops/date-span");
+    register_type(con, "mobilitydb:temporal@0.1.0/spans-ops/float-span");
+    register_type(con, "mobilitydb:temporal@0.1.0/spans-ops/int-span");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/spatial-index-ops/spatial-index-match",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/statistics-ops/anomaly-info");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/statistics-ops/histogram-bin",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/statistics-ops/kde-point");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/statistics-ops/level-crossing-info",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/statistics-ops/peak-info");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/statistics-ops/zero-crossing-info",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/stbox-ops/stbox");
+    register_type(con, "mobilitydb:temporal@0.1.0/stbox-ops/stbox3d");
+    register_type(con, "mobilitydb:temporal@0.1.0/stbox-ops/tbox");
+    register_type(con, "mobilitydb:temporal@0.1.0/stbox3d-ops/stbox3d");
+    register_type(con, "mobilitydb:temporal@0.1.0/stindex-ops/stindex-entry");
+    register_type(con, "mobilitydb:temporal@0.1.0/tbool-ops/tbool-instant");
+    register_type(con, "mobilitydb:temporal@0.1.0/tbool-ops/tbool-sequence");
+    register_type(con, "mobilitydb:temporal@0.1.0/tcbuffer-ops/cbuffer");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tcbuffer-ops/tcbuffer-instant",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tcbuffer-ops/tcbuffer-sequence",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/temporal-index-ops/temporal-index-match",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/tgeogpoint-ops/geog-point");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeogpoint-ops/tgeogpoint-instant",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeogpoint-ops/tgeogpoint-sequence",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeometry-ops/tgeometry-point-instant",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeometry-ops/tgeometry-point-sequence",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint-ops/direction-stats",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint-ops/movement-summary",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/tgeompoint-ops/speed-stats");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint-ops/trajectory-analysis",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint3d-ops/geom-point3d",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint3d-ops/tgeompoint3d-instant",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint3d-ops/tgeompoint3d-sequence",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/time-split-ops/tfloat-time-bucket",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/time-split-ops/tint-time-bucket",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/tnpoint-ops/npoint");
+    register_type(con, "mobilitydb:temporal@0.1.0/tnpoint-ops/nsegment");
+    register_type(con, "mobilitydb:temporal@0.1.0/tnpoint-ops/tnpoint-instant");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/tnpoint-ops/tnpoint-sequence",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/to-rows-ops/tcbuffer-row");
+    register_type(con, "mobilitydb:temporal@0.1.0/to-rows-ops/tgeogpoint-row");
+    register_type(con, "mobilitydb:temporal@0.1.0/to-rows-ops/tgeompoint-row");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/to-rows-ops/tgeompoint3d-row",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/to-rows-ops/tpose-row");
+    register_type(con, "mobilitydb:temporal@0.1.0/tpose-ops/pose2d");
+    register_type(con, "mobilitydb:temporal@0.1.0/tpose-ops/tpose-instant");
+    register_type(con, "mobilitydb:temporal@0.1.0/tpose-ops/tpose-sequence");
+    register_type(con, "mobilitydb:temporal@0.1.0/tstzspan-ops/tstzspan");
+    register_type(con, "mobilitydb:temporal@0.1.0/ttext-ops/ttext-instant");
+    register_type(con, "mobilitydb:temporal@0.1.0/ttext-ops/ttext-sequence");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/typed-join-ops/joined-bool-pair",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/typed-join-ops/joined-int-pair",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/typed-join-ops/joined-text-pair",
+    );
+    register_type(con, "mobilitydb:temporal@0.1.0/types/bounding-box");
+    register_type(con, "mobilitydb:temporal@0.1.0/types/geom-point");
+    register_type(con, "mobilitydb:temporal@0.1.0/types/tfloat-instant");
+    register_type(con, "mobilitydb:temporal@0.1.0/types/tfloat-sequence");
+    register_type(con, "mobilitydb:temporal@0.1.0/types/tgeompoint-instant");
+    register_type(con, "mobilitydb:temporal@0.1.0/types/tgeompoint-sequence");
+    register_type(con, "mobilitydb:temporal@0.1.0/types/time-period");
+    register_type(con, "mobilitydb:temporal@0.1.0/types/tint-instant");
+    register_type(con, "mobilitydb:temporal@0.1.0/types/tint-sequence");
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/value-split-ops/tfloat-value-bucket",
+    );
+    register_type(
+        con,
+        "mobilitydb:temporal@0.1.0/value-split-ops/tint-value-bucket",
+    );
 }
 
 unsafe fn register_type(con: ffi::duckdb_connection, name: &str) {
@@ -111,34 +297,88 @@ unsafe fn register_type(con: ffi::duckdb_connection, name: &str) {
 // ----------------------------------------------------------------------
 
 // === extension: mobilitydb ===
-// type_id= 3001 name=TFLOAT_SEQUENCE          size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3002 name=TINT_SEQUENCE            size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3003 name=TBOOL_SEQUENCE           size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3004 name=TTEXT_SEQUENCE           size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3005 name=TGEOMPOINT_SEQUENCE      size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3006 name=TGEOGPOINT_SEQUENCE      size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3007 name=TGEOMPOINT3D_SEQUENCE    size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3008 name=TGEOMETRY_SEQUENCE       size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3009 name=TCBUFFER_SEQUENCE        size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3010 name=TPOSE_SEQUENCE           size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3011 name=TNPOINT_SEQUENCE         size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3012 name=INTSPAN                  size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3013 name=FLOATSPAN                size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3014 name=DATESPAN                 size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3015 name=TSTZSPAN                 size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3016 name=INTSET                   size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3017 name=FLOATSET                 size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3018 name=DATESET                  size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3019 name=TSTZSET                  size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3020 name=TEXTSET                  size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3021 name=INTSPANSET               size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3022 name=FLOATSPANSET             size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3023 name=DATESPANSET              size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3024 name=TSTZSPANSET              size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3025 name=STBOX                    size=  48  cast_from=[]  cast_to=[]
-// type_id= 3026 name=TBOX                     size=  32  cast_from=[]  cast_to=[]
-// type_id= 3027 name=STBOX3D                  size=  56  cast_from=[]  cast_to=[]
-// type_id= 3028 name=BITEMPORAL_BOOL          size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3029 name=BITEMPORAL_INT           size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3030 name=BITEMPORAL_FLOAT         size=  -1  cast_from=[]  cast_to=[]
-// type_id= 3031 name=BITEMPORAL_TEXT          size=  -1  cast_from=[]  cast_to=[]
+// type_id=52393121 name=mobilitydb:temporal@0.1.0/bitemporal-int-ops/bitemporal-int-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=103966787 name=mobilitydb:temporal@0.1.0/types/tgeompoint-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=155001029 name=mobilitydb:temporal@0.1.0/to-rows-ops/tgeogpoint-row size=  -1  cast_from=[]  cast_to=[]
+// type_id=163682474 name=mobilitydb:temporal@0.1.0/value-split-ops/tint-value-bucket size=  -1  cast_from=[]  cast_to=[]
+// type_id=200045967 name=mobilitydb:temporal@0.1.0/tnpoint-ops/tnpoint-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=275634623 name=mobilitydb:temporal@0.1.0/tcbuffer-ops/tcbuffer-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=280621305 name=mobilitydb:temporal@0.1.0/tgeompoint3d-ops/tgeompoint3d-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=408725926 name=mobilitydb:temporal@0.1.0/other-indexes-ops/indexed-point-xyz size=  -1  cast_from=[]  cast_to=[]
+// type_id=415449570 name=mobilitydb:temporal@0.1.0/tgeogpoint-ops/tgeogpoint-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=456921347 name=mobilitydb:temporal@0.1.0/tgeompoint3d-ops/geom-point3d size=  -1  cast_from=[]  cast_to=[]
+// type_id=481081311 name=mobilitydb:temporal@0.1.0/ttext-ops/ttext-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=504596364 name=mobilitydb:temporal@0.1.0/stindex-ops/stindex-entry size=  -1  cast_from=[]  cast_to=[]
+// type_id=533059643 name=mobilitydb:temporal@0.1.0/to-rows-ops/tgeompoint3d-row size=  -1  cast_from=[]  cast_to=[]
+// type_id=627646662 name=mobilitydb:temporal@0.1.0/tcbuffer-ops/cbuffer size=  -1  cast_from=[]  cast_to=[]
+// type_id=645621959 name=mobilitydb:temporal@0.1.0/statistics-ops/kde-point size=  -1  cast_from=[]  cast_to=[]
+// type_id=720540849 name=mobilitydb:temporal@0.1.0/statistics-ops/anomaly-info size=  -1  cast_from=[]  cast_to=[]
+// type_id=757338328 name=mobilitydb:temporal@0.1.0/pattern-ops/level-crossing-info size=  -1  cast_from=[]  cast_to=[]
+// type_id=908854104 name=mobilitydb:temporal@0.1.0/tpose-ops/tpose-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=947578472 name=mobilitydb:temporal@0.1.0/to-rows-ops/tgeompoint-row size=  -1  cast_from=[]  cast_to=[]
+// type_id=990958678 name=mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-bool-pair size=  -1  cast_from=[]  cast_to=[]
+// type_id=1023286163 name=mobilitydb:temporal@0.1.0/ttext-ops/ttext-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=1101517834 name=mobilitydb:temporal@0.1.0/clustering-ops/cluster-point size=  -1  cast_from=[]  cast_to=[]
+// type_id=1114689388 name=mobilitydb:temporal@0.1.0/tgeogpoint-ops/tgeogpoint-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=1151727684 name=mobilitydb:temporal@0.1.0/spans-ops/int-span size=  -1  cast_from=[]  cast_to=[]
+// type_id=1169096897 name=mobilitydb:temporal@0.1.0/bitemporal-bool-ops/bitemporal-bool-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=1266370589 name=mobilitydb:temporal@0.1.0/other-indexes-ops/indexed-point-xy size=  -1  cast_from=[]  cast_to=[]
+// type_id=1357344391 name=mobilitydb:temporal@0.1.0/spatial-index-ops/spatial-index-match size=  -1  cast_from=[]  cast_to=[]
+// type_id=1373822723 name=mobilitydb:temporal@0.1.0/temporal-index-ops/temporal-index-match size=  -1  cast_from=[]  cast_to=[]
+// type_id=1399545205 name=mobilitydb:temporal@0.1.0/tgeogpoint-ops/geog-point size=  -1  cast_from=[]  cast_to=[]
+// type_id=1422081767 name=mobilitydb:temporal@0.1.0/tgeompoint-ops/direction-stats size=  -1  cast_from=[]  cast_to=[]
+// type_id=1530167770 name=mobilitydb:temporal@0.1.0/tgeompoint-ops/movement-summary size=  -1  cast_from=[]  cast_to=[]
+// type_id=1539321439 name=mobilitydb:temporal@0.1.0/types/bounding-box size=  -1  cast_from=[]  cast_to=[]
+// type_id=1583516332 name=mobilitydb:temporal@0.1.0/bitemporal-float-ops/bitemporal-float-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=1607310683 name=mobilitydb:temporal@0.1.0/typed-join-ops/joined-int-pair size=  -1  cast_from=[]  cast_to=[]
+// type_id=1747902721 name=mobilitydb:temporal@0.1.0/tnpoint-ops/nsegment size=  -1  cast_from=[]  cast_to=[]
+// type_id=1805734460 name=mobilitydb:temporal@0.1.0/bitemporal-float-ops/bitemporal-float-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=1826385500 name=mobilitydb:temporal@0.1.0/tpose-ops/pose2d size=  -1  cast_from=[]  cast_to=[]
+// type_id=1891284088 name=mobilitydb:temporal@0.1.0/types/tgeompoint-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=1978270080 name=mobilitydb:temporal@0.1.0/types/geom-point size=  -1  cast_from=[]  cast_to=[]
+// type_id=2030667986 name=mobilitydb:temporal@0.1.0/tstzspan-ops/tstzspan size=  -1  cast_from=[]  cast_to=[]
+// type_id=2046404220 name=mobilitydb:temporal@0.1.0/tgeometry-ops/tgeometry-point-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=2197768399 name=mobilitydb:temporal@0.1.0/bitemporal-int-ops/bitemporal-int-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=2218681788 name=mobilitydb:temporal@0.1.0/tcbuffer-ops/tcbuffer-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=2242806241 name=mobilitydb:temporal@0.1.0/types/tfloat-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=2253293907 name=mobilitydb:temporal@0.1.0/to-rows-ops/tcbuffer-row size=  -1  cast_from=[]  cast_to=[]
+// type_id=2410941858 name=mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-text-pair size=  -1  cast_from=[]  cast_to=[]
+// type_id=2423492046 name=mobilitydb:temporal@0.1.0/types/tfloat-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=2451284193 name=mobilitydb:temporal@0.1.0/stbox3d-ops/stbox3d size=  -1  cast_from=[]  cast_to=[]
+// type_id=2547900259 name=mobilitydb:temporal@0.1.0/types/tint-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=2586956586 name=mobilitydb:temporal@0.1.0/tnpoint-ops/npoint size=  -1  cast_from=[]  cast_to=[]
+// type_id=2608241780 name=mobilitydb:temporal@0.1.0/pattern-ops/peak-info size=  -1  cast_from=[]  cast_to=[]
+// type_id=2632554349 name=mobilitydb:temporal@0.1.0/statistics-ops/peak-info size=  -1  cast_from=[]  cast_to=[]
+// type_id=2652117465 name=mobilitydb:temporal@0.1.0/stbox-ops/tbox size=  -1  cast_from=[]  cast_to=[]
+// type_id=2662689699 name=mobilitydb:temporal@0.1.0/typed-join-ops/joined-bool-pair size=  -1  cast_from=[]  cast_to=[]
+// type_id=2715757176 name=mobilitydb:temporal@0.1.0/sequence-json-ops/sequence-json-row size=  -1  cast_from=[]  cast_to=[]
+// type_id=2781713172 name=mobilitydb:temporal@0.1.0/tgeompoint3d-ops/tgeompoint3d-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=2787759982 name=mobilitydb:temporal@0.1.0/tgeometry-ops/tgeometry-point-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=2818509600 name=mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-int-pair size=  -1  cast_from=[]  cast_to=[]
+// type_id=2994852487 name=mobilitydb:temporal@0.1.0/tbool-ops/tbool-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=3022707770 name=mobilitydb:temporal@0.1.0/bitemporal-bool-ops/bitemporal-bool-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=3033967748 name=mobilitydb:temporal@0.1.0/other-indexes-ops/indexed-interval size=  -1  cast_from=[]  cast_to=[]
+// type_id=3049861755 name=mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-float-pair size=  -1  cast_from=[]  cast_to=[]
+// type_id=3053336709 name=mobilitydb:temporal@0.1.0/value-split-ops/tfloat-value-bucket size=  -1  cast_from=[]  cast_to=[]
+// type_id=3060410256 name=mobilitydb:temporal@0.1.0/time-split-ops/tfloat-time-bucket size=  -1  cast_from=[]  cast_to=[]
+// type_id=3112655358 name=mobilitydb:temporal@0.1.0/tpose-ops/tpose-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=3165837525 name=mobilitydb:temporal@0.1.0/statistics-ops/level-crossing-info size=  -1  cast_from=[]  cast_to=[]
+// type_id=3174180330 name=mobilitydb:temporal@0.1.0/time-split-ops/tint-time-bucket size=  -1  cast_from=[]  cast_to=[]
+// type_id=3201187473 name=mobilitydb:temporal@0.1.0/spans-ops/float-span size=  -1  cast_from=[]  cast_to=[]
+// type_id=3264759126 name=mobilitydb:temporal@0.1.0/statistics-ops/histogram-bin size=  -1  cast_from=[]  cast_to=[]
+// type_id=3315800224 name=mobilitydb:temporal@0.1.0/tnpoint-ops/tnpoint-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=3379774183 name=mobilitydb:temporal@0.1.0/bitemporal-text-ops/bitemporal-text-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=3381583825 name=mobilitydb:temporal@0.1.0/bitemporal-text-ops/bitemporal-text-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=3429086272 name=mobilitydb:temporal@0.1.0/tgeompoint-ops/speed-stats size=  -1  cast_from=[]  cast_to=[]
+// type_id=3546380689 name=mobilitydb:temporal@0.1.0/types/time-period size=  -1  cast_from=[]  cast_to=[]
+// type_id=3792885491 name=mobilitydb:temporal@0.1.0/stbox-ops/stbox3d size=  -1  cast_from=[]  cast_to=[]
+// type_id=3834788804 name=mobilitydb:temporal@0.1.0/pattern-ops/crossing-info size=  -1  cast_from=[]  cast_to=[]
+// type_id=3868301645 name=mobilitydb:temporal@0.1.0/spans-ops/date-span size=  -1  cast_from=[]  cast_to=[]
+// type_id=3869711008 name=mobilitydb:temporal@0.1.0/tgeompoint-ops/trajectory-analysis size=  -1  cast_from=[]  cast_to=[]
+// type_id=3919225157 name=mobilitydb:temporal@0.1.0/tbool-ops/tbool-instant size=  -1  cast_from=[]  cast_to=[]
+// type_id=3939783856 name=mobilitydb:temporal@0.1.0/types/tint-sequence size=  -1  cast_from=[]  cast_to=[]
+// type_id=3957292042 name=mobilitydb:temporal@0.1.0/join-ops/joined-float-pair size=  -1  cast_from=[]  cast_to=[]
+// type_id=3970033916 name=mobilitydb:temporal@0.1.0/typed-join-ops/joined-text-pair size=  -1  cast_from=[]  cast_to=[]
+// type_id=4090919169 name=mobilitydb:temporal@0.1.0/stbox-ops/stbox size=  -1  cast_from=[]  cast_to=[]
+// type_id=4096817715 name=mobilitydb:temporal@0.1.0/to-rows-ops/tpose-row size=  -1  cast_from=[]  cast_to=[]
+// type_id=4223160577 name=mobilitydb:temporal@0.1.0/statistics-ops/zero-crossing-info size=  -1  cast_from=[]  cast_to=[]

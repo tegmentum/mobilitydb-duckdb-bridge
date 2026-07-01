@@ -52,37 +52,223 @@ pub unsafe fn register_all(con: duckdb_connection) {
     if con.is_null() {
         return;
     }
-    register_identity_cast(con, "BITEMPORAL_BOOL");
-    register_identity_cast(con, "BITEMPORAL_FLOAT");
-    register_identity_cast(con, "BITEMPORAL_INT");
-    register_identity_cast(con, "BITEMPORAL_TEXT");
-    register_identity_cast(con, "DATESET");
-    register_identity_cast(con, "DATESPAN");
-    register_identity_cast(con, "DATESPANSET");
-    register_identity_cast(con, "FLOATSET");
-    register_identity_cast(con, "FLOATSPAN");
-    register_identity_cast(con, "FLOATSPANSET");
-    register_identity_cast(con, "INTSET");
-    register_identity_cast(con, "INTSPAN");
-    register_identity_cast(con, "INTSPANSET");
-    register_identity_cast(con, "STBOX");
-    register_identity_cast(con, "STBOX3D");
-    register_identity_cast(con, "TBOOL_SEQUENCE");
-    register_identity_cast(con, "TBOX");
-    register_identity_cast(con, "TCBUFFER_SEQUENCE");
-    register_identity_cast(con, "TEXTSET");
-    register_identity_cast(con, "TFLOAT_SEQUENCE");
-    register_identity_cast(con, "TGEOGPOINT_SEQUENCE");
-    register_identity_cast(con, "TGEOMETRY_SEQUENCE");
-    register_identity_cast(con, "TGEOMPOINT3D_SEQUENCE");
-    register_identity_cast(con, "TGEOMPOINT_SEQUENCE");
-    register_identity_cast(con, "TINT_SEQUENCE");
-    register_identity_cast(con, "TNPOINT_SEQUENCE");
-    register_identity_cast(con, "TPOSE_SEQUENCE");
-    register_identity_cast(con, "TSTZSET");
-    register_identity_cast(con, "TSTZSPAN");
-    register_identity_cast(con, "TSTZSPANSET");
-    register_identity_cast(con, "TTEXT_SEQUENCE");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-bool-ops/bitemporal-bool-instant",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-bool-ops/bitemporal-bool-sequence",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-float-ops/bitemporal-float-instant",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-float-ops/bitemporal-float-sequence",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-int-ops/bitemporal-int-instant",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-int-ops/bitemporal-int-sequence",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-text-ops/bitemporal-text-instant",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/bitemporal-text-ops/bitemporal-text-sequence",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/clustering-ops/cluster-point",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/join-ops/joined-float-pair");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-bool-pair",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-float-pair",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-int-pair",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/nearest-join-ops/nearest-text-pair",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/other-indexes-ops/indexed-interval",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/other-indexes-ops/indexed-point-xy",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/other-indexes-ops/indexed-point-xyz",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/pattern-ops/crossing-info");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/pattern-ops/level-crossing-info",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/pattern-ops/peak-info");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/sequence-json-ops/sequence-json-row",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/spans-ops/date-span");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/spans-ops/float-span");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/spans-ops/int-span");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/spatial-index-ops/spatial-index-match",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/statistics-ops/anomaly-info");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/statistics-ops/histogram-bin",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/statistics-ops/kde-point");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/statistics-ops/level-crossing-info",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/statistics-ops/peak-info");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/statistics-ops/zero-crossing-info",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/stbox-ops/stbox");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/stbox-ops/stbox3d");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/stbox-ops/tbox");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/stbox3d-ops/stbox3d");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/stindex-ops/stindex-entry");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tbool-ops/tbool-instant");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tbool-ops/tbool-sequence");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tcbuffer-ops/cbuffer");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tcbuffer-ops/tcbuffer-instant",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tcbuffer-ops/tcbuffer-sequence",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/temporal-index-ops/temporal-index-match",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tgeogpoint-ops/geog-point");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeogpoint-ops/tgeogpoint-instant",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeogpoint-ops/tgeogpoint-sequence",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeometry-ops/tgeometry-point-instant",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeometry-ops/tgeometry-point-sequence",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint-ops/direction-stats",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint-ops/movement-summary",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tgeompoint-ops/speed-stats");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint-ops/trajectory-analysis",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint3d-ops/geom-point3d",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint3d-ops/tgeompoint3d-instant",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tgeompoint3d-ops/tgeompoint3d-sequence",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/time-split-ops/tfloat-time-bucket",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/time-split-ops/tint-time-bucket",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tnpoint-ops/npoint");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tnpoint-ops/nsegment");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tnpoint-ops/tnpoint-instant");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/tnpoint-ops/tnpoint-sequence",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/to-rows-ops/tcbuffer-row");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/to-rows-ops/tgeogpoint-row");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/to-rows-ops/tgeompoint-row");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/to-rows-ops/tgeompoint3d-row",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/to-rows-ops/tpose-row");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tpose-ops/pose2d");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tpose-ops/tpose-instant");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tpose-ops/tpose-sequence");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/tstzspan-ops/tstzspan");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/ttext-ops/ttext-instant");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/ttext-ops/ttext-sequence");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/typed-join-ops/joined-bool-pair",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/typed-join-ops/joined-int-pair",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/typed-join-ops/joined-text-pair",
+    );
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/types/bounding-box");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/types/geom-point");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/types/tfloat-instant");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/types/tfloat-sequence");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/types/tgeompoint-instant");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/types/tgeompoint-sequence");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/types/time-period");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/types/tint-instant");
+    register_identity_cast(con, "mobilitydb:temporal@0.1.0/types/tint-sequence");
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/value-split-ops/tfloat-value-bucket",
+    );
+    register_identity_cast(
+        con,
+        "mobilitydb:temporal@0.1.0/value-split-ops/tint-value-bucket",
+    );
 }
 
 unsafe fn register_identity_cast(con: duckdb_connection, alias: &str) {

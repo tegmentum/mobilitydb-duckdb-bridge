@@ -130,18 +130,7 @@ fn get_index(handle: u64) -> Option<Arc<dyn SpatialIndex>> {
 /// `conn` must be a valid `duckdb_connection` for the duration of
 /// this call.
 pub unsafe fn register_all(conn: duckdb_connection) {
-    register_build_aggregate(conn, "mobilitydb_spatial_index_build", "mobilitydb-strtree");
-    register_query_tf(
-        conn,
-        "mobilitydb_spatial_index_query_envelope",
-        QueryKind::Envelope,
-    );
-    register_query_tf(conn, "mobilitydb_spatial_index_query_knn", QueryKind::Knn);
-    register_query_tf(
-        conn,
-        "mobilitydb_spatial_index_within_distance",
-        QueryKind::WithinDistance,
-    );
+    // (no spatial indexes in this interface DB)
 }
 
 // =====================================================================
@@ -732,6 +721,3 @@ unsafe extern "C" fn drop_query_init_err(ptr: *mut c_void) {
 // ----------------------------------------------------------------------
 
 // === extension: mobilitydb ===
-// index `type_id=4001` type_id=4001 caps=(none)
-// index `mobilitydb-strtree` type_id=0 caps={"knn":true,"update_after_build":false,"within_distance":false,"within_distance_wkb":true}
-// index `trajbbox` type_id=0 caps={"knn":true,"update_after_build":false,"within_distance":false,"within_distance_wkb":true}

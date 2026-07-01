@@ -117,24 +117,24 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "bitemporal_bool_count_current",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "bitemporal_bool_count_superseded",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "bitemporal_bool_current",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "bitemporal_bool_ever_valid_during_count",
         &[(
             &[DataType::Binary, DataType::Int64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
@@ -144,37 +144,36 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "bitemporal_bool_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "bitemporal_bool_history_at_count",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "bitemporal_bool_inst_new",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "bitemporal_bool_instant_new",
+        &[(
+            &[
+                DataType::Boolean,
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Int64,
+            ],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
         "bitemporal_bool_len",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "bitemporal_bool_seq_from_inst",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "bitemporal_bool_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "bitemporal_bool_to_ewkt",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "bitemporal_bool_to_text",
         &[(&[DataType::Binary], DataType::Text)],
     );
     register_scalar(
@@ -192,13 +191,18 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         "bitemporal_bool_valid_during_count",
         &[(
             &[DataType::Binary, DataType::Int64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
         conn,
         "bitemporal_bool_valid_extent",
         &[(&[DataType::Binary], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "bitemporal_float_all_values",
+        &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -211,24 +215,29 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "bitemporal_float_count_current",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "bitemporal_float_count_superseded",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "bitemporal_float_current",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "bitemporal_float_current_values",
+        &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
         "bitemporal_float_ever_valid_during_count",
         &[(
             &[DataType::Binary, DataType::Int64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
@@ -238,28 +247,42 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "bitemporal_float_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "bitemporal_float_history_at_count",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "bitemporal_float_inst_new",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "bitemporal_float_instant_new",
+        &[(
+            &[
+                DataType::Float64,
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Int64,
+            ],
+            DataType::Binary,
+        )],
+    );
+    register_scalar(
+        conn,
+        "bitemporal_float_is_current",
+        &[(&[DataType::Binary], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "bitemporal_float_is_valid_at",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "bitemporal_float_len",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "bitemporal_float_seq_from_inst",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "bitemporal_float_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -268,8 +291,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "bitemporal_float_to_text",
-        &[(&[DataType::Binary], DataType::Text)],
+        "bitemporal_float_transaction_duration",
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -283,16 +306,31 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
+        "bitemporal_float_valid_duration",
+        &[(&[DataType::Binary], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
         "bitemporal_float_valid_during_count",
         &[(
             &[DataType::Binary, DataType::Int64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
         conn,
         "bitemporal_float_valid_extent",
         &[(&[DataType::Binary], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "bitemporal_float_was_known_at",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "bitemporal_int_all_values",
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -305,24 +343,29 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "bitemporal_int_count_current",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "bitemporal_int_count_superseded",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "bitemporal_int_current",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "bitemporal_int_current_values",
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "bitemporal_int_ever_valid_during_count",
         &[(
             &[DataType::Binary, DataType::Int64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
@@ -332,28 +375,42 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "bitemporal_int_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "bitemporal_int_history_at_count",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "bitemporal_int_inst_new",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "bitemporal_int_instant_new",
+        &[(
+            &[
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Int64,
+            ],
+            DataType::Binary,
+        )],
+    );
+    register_scalar(
+        conn,
+        "bitemporal_int_is_current",
+        &[(&[DataType::Binary], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "bitemporal_int_is_valid_at",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "bitemporal_int_len",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "bitemporal_int_seq_from_inst",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "bitemporal_int_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -362,8 +419,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "bitemporal_int_to_text",
-        &[(&[DataType::Binary], DataType::Text)],
+        "bitemporal_int_transaction_duration",
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -377,16 +434,26 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
+        "bitemporal_int_valid_duration",
+        &[(&[DataType::Binary], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
         "bitemporal_int_valid_during_count",
         &[(
             &[DataType::Binary, DataType::Int64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
         conn,
         "bitemporal_int_valid_extent",
         &[(&[DataType::Binary], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "bitemporal_int_was_known_at",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
     );
     register_scalar(
         conn,
@@ -399,24 +466,24 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "bitemporal_text_count_current",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "bitemporal_text_count_superseded",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "bitemporal_text_current",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "bitemporal_text_ever_valid_during_count",
         &[(
             &[DataType::Binary, DataType::Int64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
@@ -426,37 +493,36 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "bitemporal_text_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "bitemporal_text_history_at_count",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "bitemporal_text_inst_new",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "bitemporal_text_instant_new",
+        &[(
+            &[
+                DataType::Text,
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Int64,
+            ],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
         "bitemporal_text_len",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "bitemporal_text_seq_from_inst",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "bitemporal_text_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "bitemporal_text_to_ewkt",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "bitemporal_text_to_text",
         &[(&[DataType::Binary], DataType::Text)],
     );
     register_scalar(
@@ -474,7 +540,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         "bitemporal_text_valid_during_count",
         &[(
             &[DataType::Binary, DataType::Int64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
@@ -484,13 +550,48 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
+        "date_set_contains",
+        &[(&[DataType::Text, DataType::Int64], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "date_set_intersection",
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "date_set_len",
+        &[(&[DataType::Text], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "date_set_make",
+        &[(&[DataType::Text], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "date_set_minus",
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "date_set_to_text",
+        &[(&[DataType::Text], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "date_set_union",
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
         "date_span_adjacent",
         &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "date_span_contains",
-        &[(&[DataType::Binary, DataType::Int32], DataType::Boolean)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
     );
     register_scalar(
         conn,
@@ -500,7 +601,12 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "date_span_expand",
-        &[(&[DataType::Binary, DataType::Int32], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "date_span_from_text",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -512,8 +618,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         "date_span_make",
         &[(
             &[
-                DataType::Int32,
-                DataType::Int32,
+                DataType::Int64,
+                DataType::Int64,
                 DataType::Boolean,
                 DataType::Boolean,
             ],
@@ -528,7 +634,12 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "date_span_shift",
-        &[(&[DataType::Binary, DataType::Int32], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "date_span_to_text",
+        &[(&[DataType::Binary], DataType::Text)],
     );
     register_scalar(
         conn,
@@ -538,112 +649,104 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "date_span_width",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "date_spanset_contains",
-        &[(&[DataType::Binary, DataType::Int32], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Int64], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "date_spanset_from_text",
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "date_spanset_intersection",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "date_spanset_minus",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "date_spanset_num_spans",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "date_spanset_overlaps",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "date_spanset_to_text",
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "date_spanset_union",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "date_spanset_width",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "dateset_contains",
-        &[(&[DataType::Binary, DataType::Int32], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Int64], DataType::Boolean)],
     );
-    register_scalar(
-        conn,
-        "dateset_from_int",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "dateset_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "dateset_gaps",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
+    register_scalar(conn, "dateset_gaps", &[(&[DataType::Text], DataType::Text)]);
     register_scalar(
         conn,
         "dateset_intersection",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
     );
-    register_scalar(
-        conn,
-        "dateset_len",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
+    register_scalar(conn, "dateset_len", &[(&[DataType::Text], DataType::Int64)]);
     register_scalar(
         conn,
         "dateset_make",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "dateset_minus",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "dateset_nth",
-        &[(&[DataType::Binary, DataType::UInt32], DataType::Int32)],
+        &[(&[DataType::Text, DataType::Int64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "dateset_shift",
-        &[(&[DataType::Binary, DataType::Int32], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Int64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "dateset_successor",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "dateset_to_span",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "dateset_to_text",
-        &[(&[DataType::Binary], DataType::Text)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "dateset_union",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -653,7 +756,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "datespan_contains",
-        &[(&[DataType::Binary, DataType::Int32], DataType::Boolean)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
     );
     register_scalar(
         conn,
@@ -663,7 +766,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "datespan_expand",
-        &[(&[DataType::Binary, DataType::Int32], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -678,15 +781,15 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "datespan_lower",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "datespan_make",
         &[(
             &[
-                DataType::Int32,
-                DataType::Int32,
+                DataType::Int64,
+                DataType::Int64,
                 DataType::Boolean,
                 DataType::Boolean,
             ],
@@ -701,7 +804,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "datespan_shift",
-        &[(&[DataType::Binary, DataType::Int32], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -716,81 +819,104 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "datespan_upper",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "datespan_width",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "datespanset_contains",
-        &[(&[DataType::Binary, DataType::Int32], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "datespanset_from_span",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Int64], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "datespanset_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "datespanset_intersection",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "datespanset_lower",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "datespanset_make",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "datespanset_minus",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "datespanset_num_spans",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "datespanset_overlaps",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "datespanset_to_text",
-        &[(&[DataType::Binary], DataType::Text)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "datespanset_union",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "datespanset_upper",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "datespanset_width",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "dbscan_cluster_points",
+        "dbscan_cluster_count",
+        &[(
+            &[DataType::Text, DataType::Float64, DataType::Int64],
+            DataType::Int64,
+        )],
+    );
+    register_scalar(
+        conn,
+        "detect_level_crossings",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "detect_peaks",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "detect_trend",
+        &[(&[DataType::Binary], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "detect_valleys",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "detect_zero_crossings",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -826,6 +952,41 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
+        "float_set_contains",
+        &[(&[DataType::Text, DataType::Float64], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "float_set_intersection",
+        &[(&[DataType::Text, DataType::Text], DataType::Float64)],
+    );
+    register_scalar(
+        conn,
+        "float_set_len",
+        &[(&[DataType::Text], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "float_set_make",
+        &[(&[DataType::Text], DataType::Float64)],
+    );
+    register_scalar(
+        conn,
+        "float_set_minus",
+        &[(&[DataType::Text, DataType::Text], DataType::Float64)],
+    );
+    register_scalar(
+        conn,
+        "float_set_to_text",
+        &[(&[DataType::Text], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "float_set_union",
+        &[(&[DataType::Text, DataType::Text], DataType::Float64)],
+    );
+    register_scalar(
+        conn,
         "float_span_adjacent",
         &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
     );
@@ -843,6 +1004,11 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "float_span_expand",
         &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "float_span_from_text",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -874,6 +1040,11 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
+        "float_span_to_text",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
         "float_span_union",
         &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
     );
@@ -885,115 +1056,120 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "float_spanset_contains",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Float64], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "float_spanset_from_text",
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "float_spanset_intersection",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "float_spanset_minus",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "float_spanset_num_spans",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "float_spanset_overlaps",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "float_spanset_to_text",
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "float_spanset_union",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "float_spanset_width",
-        &[(&[DataType::Binary], DataType::Float64)],
+        &[(&[DataType::Text], DataType::Float64)],
     );
     register_scalar(
         conn,
         "floatset_contains",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "floatset_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Float64], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "floatset_gaps",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "floatset_intersection",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Float64)],
     );
     register_scalar(
         conn,
         "floatset_is_disjoint",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "floatset_is_subset",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "floatset_len",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "floatset_make",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Float64)],
     );
     register_scalar(
         conn,
         "floatset_minus",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Float64)],
     );
     register_scalar(
         conn,
         "floatset_nth",
-        &[(&[DataType::Binary, DataType::UInt32], DataType::Float64)],
+        &[(&[DataType::Text, DataType::Int64], DataType::Float64)],
     );
     register_scalar(
         conn,
         "floatset_scale",
         &[(
-            &[DataType::Binary, DataType::Float64, DataType::Float64],
-            DataType::Binary,
+            &[DataType::Text, DataType::Float64, DataType::Float64],
+            DataType::Float64,
         )],
     );
     register_scalar(
         conn,
         "floatset_shift",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Float64], DataType::Float64)],
     );
     register_scalar(
         conn,
         "floatset_to_span",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "floatset_to_text",
-        &[(&[DataType::Binary], DataType::Text)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "floatset_union",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -1005,7 +1181,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         "floatspan_bucket_list",
         &[(
             &[DataType::Binary, DataType::Float64, DataType::Float64],
-            DataType::Binary,
+            DataType::Text,
         )],
     );
     register_scalar(
@@ -1102,62 +1278,47 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "floatspanset_contains",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "floatspanset_from_span",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Float64], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "floatspanset_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "floatspanset_intersection",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "floatspanset_lower",
-        &[(&[DataType::Binary], DataType::Float64)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "floatspanset_minus",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "floatspanset_num_spans",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "floatspanset_overlaps",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "floatspanset_to_text",
-        &[(&[DataType::Binary], DataType::Text)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "floatspanset_union",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "floatspanset_upper",
-        &[(&[DataType::Binary], DataType::Float64)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "floatspanset_width",
-        &[(&[DataType::Binary], DataType::Float64)],
+        &[(&[DataType::Text], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -1166,43 +1327,39 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "geodetic_distance",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
         "hausdorff_distance",
         &[(&[DataType::Binary, DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
-        "indexed_interval_make",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "int_set_contains",
+        &[(&[DataType::Text, DataType::Int64], DataType::Boolean)],
     );
     register_scalar(
         conn,
-        "indexed_intervals_concat",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "int_set_intersection",
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
+    );
+    register_scalar(conn, "int_set_len", &[(&[DataType::Text], DataType::Int64)]);
+    register_scalar(
+        conn,
+        "int_set_make",
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "indexed_point_xy_make",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "int_set_minus",
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "indexed_point_xyz_make",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "int_set_to_text",
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
-        "indexed_points_xy_concat",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "indexed_points_xyz_concat",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "int_set_union",
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -1223,6 +1380,11 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "int_span_expand",
         &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "int_span_from_text",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -1254,6 +1416,11 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
+        "int_span_to_text",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
         "int_span_union",
         &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
     );
@@ -1265,115 +1432,108 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "int_spanset_contains",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Int64], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "int_spanset_from_text",
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "int_spanset_intersection",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "int_spanset_minus",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "int_spanset_num_spans",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "int_spanset_overlaps",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "int_spanset_to_text",
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "int_spanset_union",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "int_spanset_width",
-        &[(&[DataType::Binary], DataType::Int64)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "intset_contains",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Int64], DataType::Boolean)],
     );
-    register_scalar(
-        conn,
-        "intset_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "intset_gaps",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
+    register_scalar(conn, "intset_gaps", &[(&[DataType::Text], DataType::Text)]);
     register_scalar(
         conn,
         "intset_intersection",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "intset_is_disjoint",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "intset_is_subset",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
     );
-    register_scalar(
-        conn,
-        "intset_len",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "intset_make",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
+    register_scalar(conn, "intset_len", &[(&[DataType::Text], DataType::Int64)]);
+    register_scalar(conn, "intset_make", &[(&[DataType::Text], DataType::Int64)]);
     register_scalar(
         conn,
         "intset_minus",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "intset_nth",
-        &[(&[DataType::Binary, DataType::UInt32], DataType::Int64)],
+        &[(&[DataType::Text, DataType::Int64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "intset_scale",
         &[(
-            &[DataType::Binary, DataType::Float64, DataType::Int64],
-            DataType::Binary,
+            &[DataType::Text, DataType::Float64, DataType::Int64],
+            DataType::Int64,
         )],
     );
     register_scalar(
         conn,
         "intset_shift",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Int64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "intset_to_span",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "intset_to_text",
-        &[(&[DataType::Binary], DataType::Text)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "intset_union",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -1385,7 +1545,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         "intspan_bucket_list",
         &[(
             &[DataType::Binary, DataType::Int64, DataType::Int64],
-            DataType::Binary,
+            DataType::Text,
         )],
     );
     register_scalar(
@@ -1477,67 +1637,89 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "intspanset_contains",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "intspanset_from_span",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Int64], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "intspanset_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "intspanset_intersection",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "intspanset_lower",
-        &[(&[DataType::Binary], DataType::Int64)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "intspanset_minus",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "intspanset_num_spans",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
         "intspanset_overlaps",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "intspanset_to_text",
-        &[(&[DataType::Binary], DataType::Text)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "intspanset_union",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "intspanset_upper",
-        &[(&[DataType::Binary], DataType::Int64)],
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "intspanset_width",
-        &[(&[DataType::Binary], DataType::Int64)],
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "kmeans_cluster_points",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "kmeans_centroid_xs",
+        &[(
+            &[
+                DataType::Text,
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Float64,
+                DataType::Int64,
+            ],
+            DataType::Float64,
+        )],
+    );
+    register_scalar(
+        conn,
+        "kmeans_centroid_ys",
+        &[(
+            &[
+                DataType::Text,
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Float64,
+                DataType::Int64,
+            ],
+            DataType::Float64,
+        )],
+    );
+    register_scalar(
+        conn,
+        "kmeans_inertia",
+        &[(
+            &[
+                DataType::Text,
+                DataType::Int64,
+                DataType::Int64,
+                DataType::Float64,
+                DataType::Int64,
+            ],
+            DataType::Float64,
+        )],
     );
     register_scalar(
         conn,
@@ -1547,7 +1729,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
                 DataType::Binary,
                 DataType::Binary,
                 DataType::Float64,
-                DataType::UInt32,
+                DataType::Int64,
             ],
             DataType::Float64,
         )],
@@ -1560,50 +1742,10 @@ pub unsafe fn register_all(conn: duckdb_connection) {
                 DataType::Binary,
                 DataType::Binary,
                 DataType::Float64,
-                DataType::UInt32,
+                DataType::Int64,
             ],
             DataType::Float64,
         )],
-    );
-    register_scalar(
-        conn,
-        "mobilitydb_blob_cmp",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "mobilitydb_blob_eq",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "mobilitydb_blob_ge",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "mobilitydb_blob_gt",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "mobilitydb_blob_le",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "mobilitydb_blob_lt",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "network_coverage",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "network_distance",
-        &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -1628,15 +1770,10 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "network_shortest_path",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "network_shortest_path_via_edges",
         &[(
             &[DataType::Text, DataType::Int64, DataType::Int64],
-            DataType::Binary,
+            DataType::Int64,
         )],
     );
     register_scalar(
@@ -1644,7 +1781,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         "network_shortest_path_via_graph",
         &[(
             &[DataType::Binary, DataType::Int64, DataType::Int64],
-            DataType::Binary,
+            DataType::Int64,
         )],
     );
     register_scalar(
@@ -1654,28 +1791,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "npoint_eq",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "npoint_make",
-        &[(&[DataType::Int64, DataType::Float64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "npoint_new",
         &[(&[DataType::Int64, DataType::Float64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "npoint_position",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "npoint_route",
-        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -1684,36 +1801,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "npoint_to_point2d",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "nsegment_contains",
         &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
     );
     register_scalar(
         conn,
-        "nsegment_end_pos",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "nsegment_intersection",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "nsegment_length",
         &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "nsegment_make",
-        &[(
-            &[DataType::Int64, DataType::Float64, DataType::Float64],
-            DataType::Binary,
-        )],
     );
     register_scalar(
         conn,
@@ -1735,93 +1829,160 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "nsegment_route",
-        &[(&[DataType::Binary], DataType::Int64)],
+        "parse_geojson_feature_instant",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "nsegment_route_eq",
-        &[(&[DataType::Binary], DataType::Boolean)],
+        "parse_geojson_feature_sequence",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "nsegment_start_pos",
+        "parse_geojson_point",
+        &[(&[DataType::Text], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "parse_hex_wkb_tgeompoint_instant",
+        &[(&[DataType::Text, DataType::Int64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_hex_wkb_tgeompoint_sequence",
+        &[(
+            &[DataType::Text, DataType::Int64, DataType::Int64],
+            DataType::Binary,
+        )],
+    );
+    register_scalar(
+        conn,
+        "parse_mfjson_tbool_instant",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_mfjson_tbool_sequence",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_mfjson_tfloat_instant",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_mfjson_tfloat_sequence",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_mfjson_tgeompoint_instant",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_mfjson_tgeompoint_sequence",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_mfjson_tint_instant",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_mfjson_tint_sequence",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_mfjson_ttext_instant",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_mfjson_ttext_sequence",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_wkb_tgeompoint_instant",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "parse_wkb_tgeompoint_sequence",
+        &[(
+            &[DataType::Binary, DataType::Int64, DataType::Int64],
+            DataType::Binary,
+        )],
+    );
+    register_scalar(
+        conn,
+        "stbox3d_contains_point",
+        &[(
+            &[
+                DataType::Binary,
+                DataType::Float64,
+                DataType::Float64,
+                DataType::Float64,
+                DataType::Int64,
+            ],
+            DataType::Boolean,
+        )],
+    );
+    register_scalar(
+        conn,
+        "stbox3d_from_text",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "stbox3d_intersection",
+        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "stbox3d_intersects",
+        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "stbox3d_make",
+        &[(
+            &[
+                DataType::Float64,
+                DataType::Float64,
+                DataType::Float64,
+                DataType::Float64,
+                DataType::Float64,
+                DataType::Float64,
+                DataType::Int64,
+                DataType::Int64,
+            ],
+            DataType::Binary,
+        )],
+    );
+    register_scalar(
+        conn,
+        "stbox3d_surface_area",
         &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
-        "nsegment_union",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "stbox3d_to_text",
+        &[(&[DataType::Binary], DataType::Text)],
     );
     register_scalar(
         conn,
-        "period_bucket_list",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "stbox3d_union",
+        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "period_scale",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "period_shift",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "periodset_contains",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "periodset_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "periodset_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "periodset_intersection",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "periodset_minus",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "periodset_num_periods",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "periodset_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "periodset_union",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "proj_is_valid_crs",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "proj_transform",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "proj_transform_sequence",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "stbox3d_volume",
+        &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -1908,11 +2069,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "stbox_from_text",
         &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "stbox_from_tgeompoint",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -2053,17 +2209,21 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "stindex_count_in_stbox",
-        &[(&[DataType::Binary, DataType::Binary], DataType::UInt32)],
+        &[(&[DataType::Text, DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "stindex_entries_concat",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "stindex_entry_make",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "stindex_find_knn",
+        &[(
+            &[
+                DataType::Text,
+                DataType::Float64,
+                DataType::Float64,
+                DataType::Int64,
+                DataType::Int64,
+            ],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
@@ -2079,11 +2239,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "tbool_and",
         &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tbool_and_all",
-        &[(&[DataType::Binary], DataType::Boolean)],
     );
     register_scalar(
         conn,
@@ -2110,13 +2265,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tbool_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
         "tbool_count_changes",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -2131,16 +2281,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tbool_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tbool_duration_false",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tbool_duration_true",
         &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
@@ -2175,33 +2315,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tbool_from_mfjson",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tbool_implies",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tbool_instant_from_ewkt",
         &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tbool_instant_n",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tbool_instant_to_ewkt",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tbool_lower_inclusive",
-        &[(&[DataType::Binary], DataType::Boolean)],
+        "tbool_instant_new",
+        &[(&[DataType::Int64, DataType::Boolean], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -2218,28 +2338,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tbool_n_changes",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tbool_nand",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tbool_nor",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tbool_not",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tbool_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -2248,13 +2353,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tbool_or_all",
-        &[(&[DataType::Binary], DataType::Boolean)],
+        "tbool_sequence_from_ewkt",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tbool_span",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tbool_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -2273,22 +2378,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tbool_timestamp_n",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tbool_timestamps",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tbool_to_csv",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tbool_to_ewkt",
         &[(&[DataType::Binary], DataType::Text)],
     );
     register_scalar(
@@ -2298,68 +2388,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tbool_to_mfjson",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tbool_to_tint",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tbool_upper_inclusive",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
         "tbool_value_at",
         &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
     );
     register_scalar(
         conn,
-        "tbool_value_n",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tbool_values",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tbool_when_false",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tbool_when_true",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tbool_xnor",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tbool_xor",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tbox_expand",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tbox_from_text",
         &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tbox_make",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -2376,18 +2411,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tcbuffer_area",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
         "tcbuffer_area_at",
         &[(&[DataType::Binary, DataType::Int64], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_at_period",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -2419,26 +2444,11 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tcbuffer_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
         "tcbuffer_ever_contains_point",
         &[(
             &[DataType::Binary, DataType::Float64, DataType::Float64],
             DataType::Boolean,
         )],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_expand_radii",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -2462,28 +2472,21 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tcbuffer_get_radii",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tcbuffer_get_radius",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tcbuffer_inst_new",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_intersection",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_make",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tcbuffer_instant_new",
+        &[(
+            &[
+                DataType::Int64,
+                DataType::Float64,
+                DataType::Float64,
+                DataType::Float64,
+            ],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
@@ -2498,12 +2501,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tcbuffer_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_overlap_region",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -2512,28 +2510,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tcbuffer_scale",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_scale_radii",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_seq_from_inst",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_shift",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
+        "tcbuffer_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -2543,11 +2521,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tcbuffer_time_span",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_timestamps",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -2567,16 +2540,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tcbuffer_union",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tcbuffer_value_at",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tcbuffer_x_at",
         &[(&[DataType::Binary, DataType::Int64], DataType::Float64)],
     );
@@ -2584,26 +2547,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "tcbuffer_y_at",
         &[(&[DataType::Binary, DataType::Int64], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "temporal_at_period",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "temporal_at_periodset",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "temporal_at_tbox",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "temporal_at_timestamp",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -2627,18 +2570,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "temporal_index_time_span",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "temporal_meets",
         &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "temporal_minus_timestamp",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -2652,88 +2585,72 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "temporal_set_interpolation",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "temporal_starts",
         &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
     );
     register_scalar(
         conn,
+        "text_set_to_text",
+        &[(&[DataType::Text], DataType::Text)],
+    );
+    register_scalar(
+        conn,
         "textset_contains",
-        &[(&[DataType::Binary, DataType::Text], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "textset_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "textset_intersection",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "textset_is_disjoint",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "textset_is_subset",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
     );
     register_scalar(
         conn,
         "textset_is_superset",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
     );
-    register_scalar(
-        conn,
-        "textset_len",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "textset_make",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "textset_max",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "textset_min",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
+    register_scalar(conn, "textset_len", &[(&[DataType::Text], DataType::Int64)]);
+    register_scalar(conn, "textset_make", &[(&[DataType::Text], DataType::Text)]);
+    register_scalar(conn, "textset_max", &[(&[DataType::Text], DataType::Text)]);
+    register_scalar(conn, "textset_min", &[(&[DataType::Text], DataType::Text)]);
     register_scalar(
         conn,
         "textset_minus",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "textset_symdiff",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "textset_to_text",
-        &[(&[DataType::Binary], DataType::Text)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "textset_union",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "textset_values",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
@@ -2742,13 +2659,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_acos",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_acosh",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_acf",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -2790,26 +2702,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         "tfloat_always_lt_scalar",
         &[(&[DataType::Binary, DataType::Float64], DataType::Boolean)],
     );
-    register_scalar(
-        conn,
-        "tfloat_anomaly_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_anomaly_count_iqr",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_asin",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_asinh",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
+    register_scalar(conn, "tfloat_arrow_schema", &[(&[], DataType::Text)]);
     register_scalar(
         conn,
         "tfloat_at_max",
@@ -2830,53 +2723,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_at_range",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_at_tbox",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tfloat_at_value",
         &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_at_values",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_atan",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_atan2",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_atanh",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_cbrt",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_ceil",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_clamp",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_autocorrelation",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -2885,16 +2738,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_copysign",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_correlation",
-        &[(
-            &[DataType::Binary, DataType::Binary, DataType::UInt32],
-            DataType::Binary,
-        )],
+        "tfloat_correlation_at",
+        &[(&[DataType::Text, DataType::Int64], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -2903,46 +2748,21 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_cosh",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tfloat_count",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "tfloat_covariance",
+        "tfloat_count_trend_segments",
+        &[(&[DataType::Binary], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "tfloat_cross_correlation",
         &[(
-            &[DataType::Binary, DataType::Binary, DataType::UInt32],
-            DataType::Binary,
+            &[DataType::Binary, DataType::Binary, DataType::Int64],
+            DataType::Float64,
         )],
-    );
-    register_scalar(
-        conn,
-        "tfloat_cube",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_cumsum",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_degrees",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_delete_period",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_delete_time",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -2957,36 +2777,49 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tfloat_detect_anomalies_iqr",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tfloat_detect_anomalies_moving_avg",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(
+            &[DataType::Binary, DataType::Int64, DataType::Float64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
         "tfloat_detect_anomalies_zscore",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "tfloat_detect_level_crossings",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "tfloat_detect_peaks",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tfloat_detect_periodicity",
-        &[(&[DataType::Binary, DataType::UInt32], DataType::Int64)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "tfloat_detect_trend",
-        &[(&[DataType::Binary], DataType::Int32)],
+        "tfloat_detect_valleys",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_detrend",
+        "tfloat_detect_zero_crossings",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_diff",
+        "tfloat_detrend",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -3001,33 +2834,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_downsample",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
         "tfloat_ema",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_end_value",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_entropy",
-        &[(&[DataType::Binary], DataType::Float64)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -3066,43 +2874,29 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_exp2",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_expm1",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tfloat_exponential_smooth",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tfloat_fill_gaps",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(
+            &[DataType::Binary, DataType::Int64, DataType::Int64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
-        "tfloat_floor",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_fill_gaps_auto_interval",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tfloat_forecast_linear",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_fract",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_from_csv",
-        &[(&[DataType::Text], DataType::Binary)],
+        &[(
+            &[DataType::Binary, DataType::Int64, DataType::Int64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
@@ -3111,23 +2905,23 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_from_mfjson",
-        &[(&[DataType::Text], DataType::Binary)],
+        "tfloat_from_ipc",
+        &[(&[DataType::Binary], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "tfloat_from_parquet",
+        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tfloat_gaussian_smooth",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_hypot",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_insert",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_histogram",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -3136,23 +2930,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_instant_from_mfjson",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_instant_n",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_instant_n_value",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_instant_to_ewkt",
-        &[(&[DataType::Binary], DataType::Text)],
+        "tfloat_instant_new",
+        &[(&[DataType::Int64, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -3161,28 +2940,24 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_interpolation",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
         "tfloat_iqr",
         &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
-        "tfloat_is_decreasing",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_is_increasing",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
         "tfloat_kalman_smooth",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(
+            &[DataType::Binary, DataType::Float64, DataType::Float64],
+            DataType::Binary,
+        )],
+    );
+    register_scalar(
+        conn,
+        "tfloat_kde",
+        &[(
+            &[DataType::Binary, DataType::Float64, DataType::Int64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
@@ -3191,52 +2966,15 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_level_crossing_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
         "tfloat_lift_between",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_lift_eq",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_lift_ge",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_lift_gt",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_lift_le",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_lift_lt",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_lift_ne",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
+        &[(
+            &[DataType::Binary, DataType::Float64, DataType::Float64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
         "tfloat_ln",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_ln1p",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -3246,38 +2984,11 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_log2",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_log_base",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_lower_inclusive",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_max",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_max_element",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_max_scalar",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_max_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
+        "tfloat_max_cross_correlation",
+        &[(
+            &[DataType::Binary, DataType::Binary, DataType::Int64],
+            DataType::Text,
+        )],
     );
     register_scalar(
         conn,
@@ -3301,31 +3012,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_merge",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_min",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_min_element",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_min_scalar",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_min_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
         "tfloat_min_value",
         &[(&[DataType::Binary], DataType::Float64)],
     );
@@ -3344,38 +3030,38 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_minus_range",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_minus_tbox",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_minus_timestamp",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tfloat_minus_value",
         &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_minus_values",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_mode_single",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Float64)],
     );
     register_scalar(
         conn,
-        "tfloat_mod_scalar",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_moving_avg",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_moving_average",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_moving_max",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "tfloat_moving_min",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "tfloat_moving_sum",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "tfloat_moving_variance",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -3389,58 +3075,23 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_n_level_crossings",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_n_peaks",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_n_valleys",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_n_zero_crossings",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
         "tfloat_negate",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_normalize",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_num_anomalies",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
         "tfloat_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tfloat_num_instants_wit",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "tfloat_num_segments",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_pct",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_pacf",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -3449,13 +3100,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_peak_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
         "tfloat_percentile",
-        &[(&[DataType::Binary], DataType::Float64)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -3465,164 +3111,54 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tfloat_precision",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_radians",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_range",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_recip",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_quantile",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Float64)],
     );
     register_scalar(
         conn,
         "tfloat_remove_outliers",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_resample_to_count",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_rolling_mean",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tfloat_rolling_stddev",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tfloat_rolling_variance",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_round",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tfloat_sample_entropy",
         &[(
-            &[DataType::Binary, DataType::UInt32, DataType::Float64],
+            &[DataType::Binary, DataType::Int64, DataType::Float64],
             DataType::Float64,
         )],
     );
     register_scalar(
         conn,
-        "tfloat_scale",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_sequence_from_ewkt",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_second_derivative",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_segments_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_at_period",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_intersection",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_minus",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_num_sequences",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_scale",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_sequence_n",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_shift",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_symdiff",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_seqset_value_at",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_set_interpolation",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_shift_scale_time",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_sign",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_signum",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_sequence_new_with_interpolation",
+        &[(&[DataType::Text, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tfloat_sin",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_sinh",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -3632,35 +3168,14 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_span",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tfloat_sqrt",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_square",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_start_value",
+        "tfloat_stddev",
         &[(&[DataType::Binary], DataType::Float64)],
     );
-    register_scalar(
-        conn,
-        "tfloat_statistics",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    // scalar `tfloat_stddev` skipped — name also published as an aggregate; the aggregate form is registered instead (see aggregates.rs).
     register_scalar(
         conn,
         "tfloat_sub",
@@ -3671,7 +3186,11 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         "tfloat_sub_scalar",
         &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
-    // scalar `tfloat_sum` skipped — name also published as an aggregate; the aggregate form is registered instead (see aggregates.rs).
+    register_scalar(
+        conn,
+        "tfloat_sum",
+        &[(&[DataType::Binary], DataType::Float64)],
+    );
     register_scalar(
         conn,
         "tfloat_tan",
@@ -3679,49 +3198,9 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_tanh",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_tbox",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_tbox_time_span",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_tbox_tmax",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_tbox_tmin",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_tbox_value_span",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_tbox_vmax",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_tbox_vmin",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
         "tfloat_temporal_correlation",
         &[(
-            &[DataType::Binary, DataType::Binary, DataType::UInt32],
+            &[DataType::Binary, DataType::Binary, DataType::Int64],
             DataType::Binary,
         )],
     );
@@ -3729,9 +3208,14 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "tfloat_temporal_covariance",
         &[(
-            &[DataType::Binary, DataType::Binary, DataType::UInt32],
+            &[DataType::Binary, DataType::Binary, DataType::Int64],
             DataType::Binary,
         )],
+    );
+    register_scalar(
+        conn,
+        "tfloat_temporal_entropy",
+        &[(&[DataType::Text, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -3750,6 +3234,16 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
+        "tfloat_temporal_iqr",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "tfloat_temporal_kurtosis",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
         "tfloat_temporal_le",
         &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
     );
@@ -3760,8 +3254,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_temporal_median",
-        &[(&[DataType::Binary], DataType::Float64)],
+        "tfloat_temporal_mode",
+        &[(&[DataType::Text, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -3770,23 +3264,18 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_temporal_stddev",
-        &[(&[DataType::Binary], DataType::Float64)],
+        "tfloat_temporal_range",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_temporal_variance",
-        &[(&[DataType::Binary], DataType::Float64)],
+        "tfloat_temporal_skewness",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tfloat_time_bucket",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_time_bucket_count",
-        &[(&[DataType::Binary], DataType::Int32)],
+        "tfloat_temporal_weighted_median",
+        &[(&[DataType::Text, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -3795,33 +3284,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_time_split_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_time_split_nth",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_timestamp_n",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_timestamps",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_to_csv",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_to_ewkt",
-        &[(&[DataType::Binary], DataType::Text)],
+        "tfloat_to_ipc",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -3830,63 +3294,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_to_linear",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_to_mfjson",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_to_stepwise",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_to_tint",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_trend_n",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_trend_segment_count",
-        &[(&[DataType::Binary], DataType::Int32)],
+        "tfloat_to_parquet",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tfloat_trend_slope",
         &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_trunc",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_tunion_avg",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_tunion_max",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_tunion_min",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_tunion_sum",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -3925,23 +3339,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_update",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_upper_inclusive",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_upsample",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_valley_count",
-        &[(&[DataType::Binary], DataType::Int32)],
+        "tfloat_upsample_to_target",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -3950,43 +3349,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_value_bucket_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_value_bucket_index",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_value_n",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_value_split_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_value_split_nth",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_values",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tfloat_variance",
         &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
-        "tfloat_wcount",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tfloat_variance_aggregate",
+        &[(&[DataType::Text], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -4020,76 +3389,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tfloat_wmax",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_wmedian",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_wmin",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_wpercentile",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_wsum",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_zero_crossing_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tfloat_zscore",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloatrange_always_contains",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tfloatrange_ever_contains",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tfloatrange_from_bounds",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tfloatrange_lower",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloatrange_midpoint",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloatrange_upper",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tfloatrange_width",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
         "tgeogpoint_always_dwithin_point_geodetic",
         &[(
             &[
@@ -4100,11 +3399,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
             ],
             DataType::Boolean,
         )],
-    );
-    register_scalar(
-        conn,
-        "tgeogpoint_at_period",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -4123,12 +3417,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeogpoint_azimuth_geodetic",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeogpoint_distance",
+        "tgeogpoint_azimuths_geodetic",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -4149,11 +3438,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeogpoint_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
         "tgeogpoint_dwithin_point_geodetic",
         &[(
             &[
@@ -4167,38 +3451,26 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeogpoint_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
+        "tgeogpoint_from_ewkt",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tgeogpoint_end_value",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tgeogpoint_instant_from_ewkt",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tgeogpoint_getlat",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeogpoint_getlon",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeogpoint_instant_n",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tgeogpoint_instant_new",
+        &[(
+            &[DataType::Int64, DataType::Float64, DataType::Float64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
         "tgeogpoint_lat_at",
         &[(&[DataType::Binary, DataType::Int64], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeogpoint_latitude_at",
-        &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -4209,11 +3481,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "tgeogpoint_lon_at",
         &[(&[DataType::Binary, DataType::Int64], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeogpoint_longitude_at",
-        &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -4244,25 +3511,30 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tgeogpoint_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeogpoint_num_stops",
         &[(
             &[DataType::Binary, DataType::Float64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
         conn,
         "tgeogpoint_num_turns",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "tgeogpoint_shift",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tgeogpoint_sequence_from_ewkt",
+        &[(&[DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "tgeogpoint_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -4271,17 +3543,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeogpoint_speed_geodetic",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeogpoint_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeogpoint_start_value",
+        "tgeogpoint_speeds_geodetic",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -4304,11 +3566,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeogpoint_timestamps",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tgeogpoint_tintersects_point_geodetic",
         &[(
             &[
@@ -4322,182 +3579,33 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeogpoint_to_tgeompoint",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tgeometry_point_instant_new",
+        &[(
+            &[DataType::Int64, DataType::Float64, DataType::Float64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
-        "tgeogpoint_value_at",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tgeometry_point_min_distance",
+        &[(&[DataType::Binary, DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
-        "tgeometry_always_contains",
-        &[(&[DataType::Binary], DataType::Boolean)],
+        "tgeometry_point_min_distance_to_point",
+        &[(
+            &[DataType::Binary, DataType::Float64, DataType::Float64],
+            DataType::Float64,
+        )],
     );
     register_scalar(
         conn,
-        "tgeometry_at_period",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_at_spatial_contains",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_at_spatial_intersects",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_at_spatial_within",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_avg_area",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_bounding_box",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_centroid",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_dominant_type",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_duration",
+        "tgeometry_point_num_instants",
         &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "tgeometry_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_ever_contains",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_ever_intersects",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_ever_within",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_get_area",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_get_length",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_is_homogeneous",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_max_area",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_min_area",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_scale",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_shift",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_simplify",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_tarea",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_tlength",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_to_tgeompoint",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_total_area",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_total_coords",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeometry_type",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_altitude",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_altitude_profile",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_altitude_range",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_at_period",
+        "tgeometry_point_time_span",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -4516,17 +3624,17 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint3d_at_stbox",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_avg_speed",
+        "tgeompoint3d_avg_climb_rate",
         &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
-        "tgeompoint3d_avg_speed_3d",
+        "tgeompoint3d_avg_descent_rate",
+        &[(&[DataType::Binary], DataType::Float64)],
+    );
+    register_scalar(
+        conn,
+        "tgeompoint3d_avg_speed",
         &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
@@ -4536,23 +3644,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint3d_centroid",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_climb_rate",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint3d_cumulative_length",
         &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_descent_rate",
-        &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -4575,31 +3668,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint3d_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_elevation_gain",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_elevation_loss",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_end_value",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint3d_frechet_distance",
         &[(&[DataType::Binary, DataType::Binary], DataType::Float64)],
     );
@@ -4615,62 +3683,25 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint3d_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_getx",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_gety",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_getz",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint3d_hausdorff_distance",
         &[(&[DataType::Binary, DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
-        "tgeompoint3d_inst_new",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_instant_n",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tgeompoint3d_instant_new",
+        &[(
+            &[
+                DataType::Int64,
+                DataType::Float64,
+                DataType::Float64,
+                DataType::Float64,
+            ],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
         "tgeompoint3d_length",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_length_2d",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_length_3d",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_max_altitude",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_min_altitude",
         &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
@@ -4689,13 +3720,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint3d_minus_stbox",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint3d_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -4709,52 +3735,17 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint3d_project_to_2d",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tgeompoint3d_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tgeompoint3d_seq_from_inst",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_shift",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_simplify",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_speed_3d",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_start_value",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_stbox",
+        "tgeompoint3d_speeds",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tgeompoint3d_time_span",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_timestamps",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -4769,11 +3760,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint3d_to_text",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint3d_total_climb",
         &[(&[DataType::Binary], DataType::Float64)],
     );
@@ -4781,11 +3767,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "tgeompoint3d_total_descent",
         &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_value_at",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -4809,49 +3790,25 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint3d_x_coords",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_y_coords",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint3d_z_coords",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_acceleration_count",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeompoint_acceleration_event_count",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeompoint_acceleration_events",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeompoint_angular_difference",
         &[(&[DataType::Binary], DataType::Binary)],
     );
-    register_scalar(
-        conn,
-        "tgeompoint_area",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_at_geometry",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
+    register_scalar(conn, "tgeompoint_arrow_schema", &[(&[], DataType::Text)]);
     register_scalar(
         conn,
         "tgeompoint_at_period",
@@ -4875,11 +3832,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_at_points",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_at_stbox",
         &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
     );
@@ -4900,86 +3852,16 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_bearing_seq",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_bounding_box",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tgeompoint_bounds_detailed",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_buffer_polygon",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_center_x",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_center_y",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_centroid",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_centroid_x",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_centroid_y",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_cluster_count_dbscan",
         &[(
-            &[DataType::Binary, DataType::Float64, DataType::UInt32],
-            DataType::Int32,
+            &[DataType::Binary, DataType::Float64, DataType::Int64],
+            DataType::Int64,
         )],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_cluster_dbscan",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_cluster_kmeans",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_convex_hull_area",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_cpa_distance",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_cpa_time",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_cum_length",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -4988,66 +3870,31 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_delete_period",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_detect_loops",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeompoint_detect_stops",
         &[(
             &[DataType::Binary, DataType::Float64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
         conn,
         "tgeompoint_detect_turns",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeompoint_detect_u_turns",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_dir_seg_n",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_dir_stats",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_direction_segment_count",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeompoint_direction_stats",
         &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_disjoint_polygon",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_disjoint_trajectory",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_displacement",
-        &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -5067,63 +3914,16 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_downsample",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_end_x",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_end_y",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_entirely_within",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_find_convoys",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_find_flocks",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_find_meetings",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_forecast_position",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Text)],
     );
     register_scalar(
         conn,
         "tgeompoint_forecast_trajectory",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_from_csv",
-        &[(&[DataType::Text], DataType::Binary)],
+        &[(
+            &[DataType::Binary, DataType::Int64, DataType::Int64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
@@ -5132,37 +3932,22 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_from_geojson",
+        "tgeompoint_from_ewkt_m",
+        &[(&[DataType::Text, DataType::Int64], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "tgeompoint_from_ipc",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tgeompoint_from_geojson_feature",
+        "tgeompoint_from_parquet",
         &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_from_gpx",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_from_hexewkb",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_from_mfjson",
-        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tgeompoint_from_web_mercator",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_full",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -5178,21 +3963,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tgeompoint_geodetic_speed",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_getx",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_gety",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_height",
         &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
@@ -5202,38 +3972,11 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_instant_from_mfjson",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_instant_n_x",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_instant_n_y",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_instant_to_ewkt",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_interpolation",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_intersects_polygon",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_intersects_trajectory",
-        &[(&[DataType::Binary], DataType::Boolean)],
+        "tgeompoint_instant_new",
+        &[(
+            &[DataType::Int64, DataType::Float64, DataType::Float64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
@@ -5242,13 +3985,11 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_is_stopped",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_kalman_smooth",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(
+            &[DataType::Binary, DataType::Float64, DataType::Float64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
@@ -5257,22 +3998,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_lower_inclusive",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_make_simple",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_map_match",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_map_match_hmm",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -5282,23 +4008,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_merge",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_min_distance",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_min_speed",
         &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_minus_geometry",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -5323,33 +4034,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_minus_points",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_minus_stbox",
         &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_minus_timestamp",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_movement_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_movement_n",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_movement_sum",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -5358,91 +4044,61 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_nearest_approach_between_distance",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_nearest_approach_between_time",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_nearest_approach_distance",
         &[(&[DataType::Binary, DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
-        "tgeompoint_nearest_approach_instant_distance",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_nearest_approach_instant_time",
+        "tgeompoint_num_direction_flips",
         &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_nearest_approach_time",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_nearest_point_on_trajectory",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tgeompoint_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeompoint_num_loops",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "tgeompoint_num_segments",
-        &[(&[DataType::Binary], DataType::Int32)],
+        "tgeompoint_num_movement_segments_by_displacement",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "tgeompoint_num_moving_segments",
+        &[(&[DataType::Binary], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "tgeompoint_num_stationary_runs_by_displacement",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeompoint_num_stops",
         &[(
             &[DataType::Binary, DataType::Float64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
         conn,
         "tgeompoint_num_turns",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeompoint_num_u_turns",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_offset_curve",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeompoint_overlaps_stbox",
         &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_quality_metrics",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_quality_report",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -5452,72 +4108,17 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tgeompoint_remove_repeated_points",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tgeompoint_resample_to_count",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tgeompoint_sequence_from_ewkt",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tgeompoint_seqset_at_period",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_seqset_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_seqset_intersection",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_seqset_minus",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_seqset_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_seqset_num_sequences",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_seqset_scale",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_seqset_sequence_n",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_seqset_shift",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_seqset_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_seqset_symdiff",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_shortest_line_length",
-        &[(&[DataType::Binary], DataType::Float64)],
+        "tgeompoint_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -5527,37 +4128,27 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tgeompoint_simplify_semantic",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(
+            &[
+                DataType::Binary,
+                DataType::Float64,
+                DataType::Boolean,
+                DataType::Int64,
+                DataType::Boolean,
+                DataType::Float64,
+            ],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
         "tgeompoint_simplify_to_n",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tgeompoint_simplify_visvalingam",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_sinuosity",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_span",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_speed_seg_n",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_speed_segment_count",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -5571,137 +4162,38 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_speeds_seq",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tgeompoint_srid",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_start_timestamp",
         &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_start_x",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_start_y",
-        &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
         "tgeompoint_stop_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_stop_n",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_stop_segment_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_stop_split_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_tcontains",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_tcovers",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_tcrosses_polygon",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_tdisjoint",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_tdisjoint_polygon",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_tdwithin",
-        &[(&[DataType::Binary], DataType::Boolean)],
+        &[(
+            &[DataType::Binary, DataType::Float64, DataType::Int64],
+            DataType::Int64,
+        )],
     );
     register_scalar(
         conn,
         "tgeompoint_temporal_distance",
+        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "tgeompoint_temporal_distance_to_point",
+        &[(
+            &[DataType::Binary, DataType::Float64, DataType::Float64],
+            DataType::Binary,
+        )],
+    );
+    register_scalar(
+        conn,
+        "tgeompoint_time_span",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tgeompoint_tequals",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_time_bucket",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_time_split_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_timestamp_n",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_timestamps",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_tintersects",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_tintersects_polygon",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_to_3d",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_to_3d_with_altitudes",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_to_csv",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_to_ewkt",
+        "tgeompoint_to_ewkt_m",
         &[(&[DataType::Binary], DataType::Text)],
     );
     register_scalar(
@@ -5716,33 +4208,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_to_geojson_feature_collection",
-        &[(&[DataType::Binary], DataType::Text)],
+        "tgeompoint_to_ipc",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tgeompoint_to_gpx",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_to_hexewkb",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_to_kml",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_to_mfjson",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_to_tgeogpoint",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tgeompoint_to_parquet",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -5756,143 +4228,21 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tgeompoint_tortuosity_idx",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_total_distance",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_total_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_total_length_set",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_toverlaps",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_traj_geog_bearing",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_traj_geog_speed",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tgeompoint_total_stationary_duration_by_displacement",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tgeompoint_transform",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_ttouches",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_turn_seq",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_twithin_polygon",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_upper_inclusive",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_upsample",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_utm_zone",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_v_stats",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(
+            &[DataType::Binary, DataType::Int64, DataType::Int64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
         "tgeompoint_value_at",
         &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_vmax",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_vmin",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_width",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_within_polygon",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_x_at",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_xmax",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_xmin",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_y_at",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_ymax",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tgeompoint_ymin",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "timeset_gaps",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "timeset_to_span",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(conn, "tint_abs", &[(&[DataType::Binary], DataType::Binary)]);
     register_scalar(
@@ -5935,6 +4285,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         "tint_always_lt_scalar",
         &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
     );
+    register_scalar(conn, "tint_arrow_schema", &[(&[], DataType::Text)]);
     register_scalar(
         conn,
         "tint_at_max",
@@ -5956,12 +4307,10 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tint_at_range",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_at_tbox",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(
+            &[DataType::Binary, DataType::Int64, DataType::Int64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
@@ -5971,67 +4320,12 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tint_at_values",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tint_bitwise_and",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_bitwise_or",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_bitwise_xor",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_clamp",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_consecutive_diff",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tint_cube",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_cumsum",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_delete_period",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_delete_time",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_detect_anomalies_iqr",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_detect_anomalies_zscore",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tint_count_aggregate",
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -6047,26 +4341,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "tint_div_scalar",
         &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_downsample",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_end_value",
-        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -6105,23 +4379,17 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_from_csv",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tint_from_ewkt",
         &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tint_from_mfjson",
-        &[(&[DataType::Text], DataType::Binary)],
+        "tint_from_ipc",
+        &[(&[DataType::Binary], DataType::Binary)],
     );
-    register_scalar(conn, "tint_gcd", &[(&[DataType::Binary], DataType::Int64)]);
     register_scalar(
         conn,
-        "tint_insert",
+        "tint_from_parquet",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -6131,23 +4399,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_instant_from_mfjson",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_instant_n",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_instant_n_value",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_instant_to_ewkt",
-        &[(&[DataType::Binary], DataType::Text)],
+        "tint_instant_new",
+        &[(&[DataType::Int64, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -6156,65 +4409,26 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_interpolation",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tint_iqr",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
         "tint_kurtosis",
         &[(&[DataType::Binary], DataType::Float64)],
     );
-    register_scalar(conn, "tint_lcm", &[(&[DataType::Binary], DataType::Int64)]);
     register_scalar(
         conn,
         "tint_lift_between",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(
+            &[DataType::Binary, DataType::Int64, DataType::Int64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
-        "tint_lift_eq",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_lift_ge",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_lift_gt",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_lift_le",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_lift_lt",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_lift_ne",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_lower_inclusive",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(conn, "tint_max", &[(&[DataType::Binary], DataType::Int64)]);
-    register_scalar(
-        conn,
-        "tint_max_timestamp",
+        "tint_max_value",
         &[(&[DataType::Binary], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "tint_max_value_aggregate",
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -6226,12 +4440,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         "tint_max_value_wit",
         &[(&[DataType::Binary], DataType::Int64)],
     );
-    register_scalar(conn, "tint_mean", &[(&[DataType::Binary], DataType::Int64)]);
-    register_scalar(
-        conn,
-        "tint_mean_f64",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
     register_scalar(
         conn,
         "tint_median",
@@ -6239,14 +4447,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_merge",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tint_min_value",
+        &[(&[DataType::Binary], DataType::Int64)],
     );
-    register_scalar(conn, "tint_min", &[(&[DataType::Binary], DataType::Int64)]);
     register_scalar(
         conn,
-        "tint_min_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
+        "tint_min_value_aggregate",
+        &[(&[DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -6269,17 +4476,10 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tint_minus_range",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_minus_tbox",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_minus_timestamp",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(
+            &[DataType::Binary, DataType::Int64, DataType::Int64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
@@ -6289,18 +4489,19 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tint_minus_values",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tint_mod",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tint_mod_scalar",
         &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
+    register_scalar(conn, "tint_mode", &[(&[DataType::Binary], DataType::Int64)]);
     register_scalar(
         conn,
         "tint_moving_average",
@@ -6323,119 +4524,63 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_num_anomalies",
-        &[(&[DataType::Binary], DataType::Int32)],
+        "tint_num_anomalies_iqr",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "tint_num_anomalies_zscore",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tint_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tint_num_instants_wit",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tint_num_segments",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tint_percentile",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(conn, "tint_pow", &[(&[DataType::Binary], DataType::Binary)]);
-    register_scalar(
-        conn,
-        "tint_range",
         &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
-        "tint_range_value",
-        &[(&[DataType::Binary], DataType::Int64)],
+        "tint_quantile",
+        &[(&[DataType::Binary, DataType::Float64], DataType::Float64)],
     );
     register_scalar(
         conn,
-        "tint_resample_to_count",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tint_quantiles",
+        &[(&[DataType::Binary, DataType::Text], DataType::Float64)],
+    );
+    register_scalar(
+        conn,
+        "tint_range_aggregate",
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "tint_rolling_mean",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tint_rolling_stddev",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tint_rolling_variance",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tint_seqset_at_period",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tint_sequence_from_ewkt",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tint_seqset_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_seqset_intersection",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_seqset_minus",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_seqset_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tint_seqset_num_sequences",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tint_seqset_scale",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_seqset_sequence_n",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_seqset_shift",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_seqset_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_seqset_symdiff",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_seqset_value_at",
-        &[(&[DataType::Binary], DataType::Int64)],
+        "tint_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -6444,47 +4589,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_shift",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_sign",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tint_skewness",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tint_span",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_square",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_start_value",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_statistics",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_stddev",
         &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
@@ -6496,47 +4601,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "tint_sub_scalar",
         &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
-    );
-    // scalar `tint_sum` skipped — name also published as an aggregate; the aggregate form is registered instead (see aggregates.rs).
-    register_scalar(
-        conn,
-        "tint_tbox",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_tbox_time_span",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_tbox_tmax",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_tbox_tmin",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_tbox_vmax",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_tbox_vmin",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_temporal_avg",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tint_temporal_count",
-        &[(&[DataType::Binary], DataType::Int32)],
     );
     register_scalar(
         conn,
@@ -6565,8 +4629,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_temporal_median",
-        &[(&[DataType::Binary], DataType::Float64)],
+        "tint_temporal_mode",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -6575,18 +4639,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_temporal_stddev",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tint_temporal_variance",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tint_time_bucket",
-        &[(&[DataType::Binary], DataType::Int64)],
+        "tint_temporal_range",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -6595,33 +4649,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_time_split_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tint_time_split_nth",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_timestamp_n",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_timestamps",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_to_csv",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tint_to_ewkt",
-        &[(&[DataType::Binary], DataType::Text)],
+        "tint_to_ipc",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -6630,38 +4659,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_to_mfjson",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "tint_to_tbool",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_to_tfloat",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_tunion_avg",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_tunion_max",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_tunion_min",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_tunion_sum",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tint_to_parquet",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -6700,18 +4699,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_update",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_upper_inclusive",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tint_upsample",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tint_upsample_to_target",
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -6720,43 +4709,11 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_value_bucket_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
         "tint_value_bucket_index",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_value_n",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tint_value_split_count",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tint_value_split_nth",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_values",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_variance",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tint_wcount",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(
+            &[DataType::Int64, DataType::Int64, DataType::Int64],
+            DataType::Int64,
+        )],
     );
     register_scalar(
         conn,
@@ -6790,61 +4747,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tint_wmax",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_wmedian",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_wmin",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_wpercentile",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tint_wsum",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tintrange_always_contains",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tintrange_ever_contains",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tintrange_from_bounds",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tintrange_lower",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tintrange_upper",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tintrange_width",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
         "tnpoint_at_period",
         &[(
             &[DataType::Binary, DataType::Int64, DataType::Int64],
@@ -6866,26 +4768,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tnpoint_avg_position",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
         "tnpoint_cumulative_length",
         &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tnpoint_detect_stops",
-        &[(
-            &[DataType::Binary, DataType::Float64, DataType::Int64],
-            DataType::Int32,
-        )],
-    );
-    register_scalar(
-        conn,
-        "tnpoint_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -6894,23 +4778,16 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tnpoint_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
         "tnpoint_from_ewkt",
         &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tnpoint_inst_new",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tnpoint_interpolate",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Float64)],
+        "tnpoint_instant_new",
+        &[(
+            &[DataType::Int64, DataType::Int64, DataType::Float64],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
@@ -6926,16 +4803,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "tnpoint_is_single_route",
         &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tnpoint_length",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tnpoint_match_quality",
-        &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
@@ -6960,24 +4827,19 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tnpoint_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tnpoint_num_route_changes",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tnpoint_num_routes",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "tnpoint_num_stops",
         &[(
             &[DataType::Binary, DataType::Float64, DataType::Int64],
-            DataType::Int32,
+            DataType::Int64,
         )],
     );
     register_scalar(
@@ -6992,23 +4854,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tnpoint_route",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
         "tnpoint_route_id",
         &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tnpoint_routes",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tnpoint_scale",
-        &[(&[DataType::Binary, DataType::Float64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -7017,13 +4864,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tnpoint_seq_from_inst",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tnpoint_shift",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
+        "tnpoint_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -7037,18 +4879,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tnpoint_speed",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tnpoint_start_position",
         &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "tnpoint_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -7065,18 +4897,161 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tnpoint_timestamps",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tnpoint_to_ewkt",
         &[(&[DataType::Binary], DataType::Text)],
     );
     register_scalar(
         conn,
-        "tnpoint_to_geometry",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "to_ewkt_tbool_instant",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_ewkt_tbool_sequence",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_ewkt_tfloat_instant",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_ewkt_tfloat_sequence",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_ewkt_tgeompoint_instant",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_ewkt_tgeompoint_sequence",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_ewkt_tint_instant",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_ewkt_tint_sequence",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_ewkt_ttext_instant",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_ewkt_ttext_sequence",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_geojson_feature_collection",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_geojson_linestring",
+        &[(&[DataType::Text], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_geojson_point",
+        &[(&[DataType::Float64, DataType::Float64], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_geojson_point_pretty",
+        &[(&[DataType::Float64, DataType::Float64], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_geojson_tgeompoint_instant",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_hex_wkb_tgeompoint_instant",
+        &[(&[DataType::Binary, DataType::Text], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_hex_wkb_tgeompoint_sequence",
+        &[(&[DataType::Binary, DataType::Text], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_mfjson_tbool_instant",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_mfjson_tbool_sequence",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_mfjson_tfloat_instant",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_mfjson_tfloat_sequence",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_mfjson_tgeompoint_instant",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_mfjson_tgeompoint_sequence",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_mfjson_tint_instant",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_mfjson_tint_sequence",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_mfjson_ttext_instant",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_mfjson_ttext_sequence",
+        &[(&[DataType::Binary], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "to_wkb_point",
+        &[(
+            &[DataType::Float64, DataType::Float64, DataType::Text],
+            DataType::Binary,
+        )],
+    );
+    register_scalar(
+        conn,
+        "to_wkb_tgeompoint_instant",
+        &[(&[DataType::Binary, DataType::Text], DataType::Binary)],
+    );
+    register_scalar(
+        conn,
+        "to_wkb_tgeompoint_sequence",
+        &[(&[DataType::Binary, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -7091,11 +5066,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tpose_angular_velocity",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tpose_at_period",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -7115,11 +5085,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tpose_distance",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tpose_distance_to_point",
         &[(
             &[DataType::Binary, DataType::Float64, DataType::Float64],
@@ -7130,16 +5095,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "tpose_distance_to_pose",
         &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tpose_duration",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tpose_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -7163,13 +5118,16 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tpose_heading_degrees",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tpose_inst_new",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tpose_instant_new",
+        &[(
+            &[
+                DataType::Int64,
+                DataType::Float64,
+                DataType::Float64,
+                DataType::Float64,
+            ],
+            DataType::Binary,
+        )],
     );
     register_scalar(
         conn,
@@ -7179,11 +5137,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tpose_linear_speed",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tpose_make",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -7202,7 +5155,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tpose_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -7226,32 +5179,12 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tpose_scale",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tpose_seq_from_inst",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tpose_shift",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tpose_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
+        "tpose_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "tpose_time_span",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tpose_timestamps",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -7261,113 +5194,84 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "tpose_to_tgeompoint",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "tpose_total_rotation",
         &[(&[DataType::Binary], DataType::Float64)],
     );
     register_scalar(
         conn,
-        "tpose_value_at",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "tstz_set_to_text",
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
-        "trajectory_ids",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_contains",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_end_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_from_text",
+        "tstz_span_from_text",
         &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "tstzset_intersection",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_len",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_make",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_minus",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_nth",
-        &[(&[DataType::Binary, DataType::UInt32], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_num_timestamps",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_overlaps",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_scale",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_shift",
-        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_start_timestamp",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_successor",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_timestamp_n",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_timestamps",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "tstzset_to_text",
+        "tstz_span_to_text",
         &[(&[DataType::Binary], DataType::Text)],
     );
     register_scalar(
         conn,
+        "tstz_spanset_from_text",
+        &[(&[DataType::Text], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "tstz_spanset_to_text",
+        &[(&[DataType::Text], DataType::Text)],
+    );
+    register_scalar(
+        conn,
+        "tstzset_contains",
+        &[(&[DataType::Text, DataType::Int64], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "tstzset_intersection",
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
+    );
+    register_scalar(conn, "tstzset_len", &[(&[DataType::Text], DataType::Int64)]);
+    register_scalar(
+        conn,
+        "tstzset_make",
+        &[(&[DataType::Text], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "tstzset_minus",
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "tstzset_nth",
+        &[(&[DataType::Text, DataType::Int64], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "tstzset_overlaps",
+        &[(&[DataType::Text, DataType::Text], DataType::Boolean)],
+    );
+    register_scalar(
+        conn,
+        "tstzset_shift",
+        &[(&[DataType::Text, DataType::Int64], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "tstzset_successor",
+        &[(&[DataType::Text], DataType::Int64)],
+    );
+    register_scalar(
+        conn,
+        "tstzset_to_text",
+        &[(&[DataType::Text], DataType::Text)],
+    );
+    register_scalar(
+        conn,
         "tstzset_union",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Text, DataType::Text], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -7468,12 +5372,12 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "tstzspanset_from_text",
-        &[(&[DataType::Text], DataType::Binary)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
         "tstzspanset_to_text",
-        &[(&[DataType::Binary], DataType::Text)],
+        &[(&[DataType::Text], DataType::Text)],
     );
     register_scalar(
         conn,
@@ -7500,33 +5404,18 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "ttext_char_count",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "ttext_concat",
-        &[(&[DataType::Binary, DataType::Binary], DataType::Text)],
+        &[(&[DataType::Binary, DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "ttext_concat_seqs",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "ttext_concat_aggregate",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "ttext_concat_str",
         &[(&[DataType::Binary, DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "ttext_contains",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "ttext_count",
-        &[(&[DataType::Binary], DataType::Int32)],
     );
     register_scalar(
         conn,
@@ -7545,11 +5434,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "ttext_ends_with",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
         "ttext_ever_eq",
         &[(&[DataType::Binary, DataType::Text], DataType::Boolean)],
     );
@@ -7565,11 +5449,6 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "ttext_from_mfjson",
-        &[(&[DataType::Text], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "ttext_ilike",
         &[(&[DataType::Binary, DataType::Text], DataType::Binary)],
     );
@@ -7580,18 +5459,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "ttext_instant_n",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "ttext_instant_to_ewkt",
-        &[(&[DataType::Binary], DataType::Text)],
+        "ttext_instant_new",
+        &[(&[DataType::Int64, DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
         "ttext_left",
-        &[(&[DataType::Binary, DataType::UInt32], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -7605,38 +5479,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "ttext_longest_length",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
         "ttext_lower",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "ttext_lower_inclusive",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "ttext_lpad",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
         "ttext_ltrim",
         &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "ttext_max_value",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "ttext_min_value",
-        &[(&[DataType::Binary], DataType::Text)],
     );
     register_scalar(
         conn,
@@ -7654,12 +5503,12 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_scalar(
         conn,
         "ttext_num_instants",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
         "ttext_num_instants_scalar",
-        &[(&[DataType::Binary], DataType::Int32)],
+        &[(&[DataType::Binary], DataType::Int64)],
     );
     register_scalar(
         conn,
@@ -7681,28 +5530,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "ttext_repeat",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "ttext_replace",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "ttext_reverse",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "ttext_right",
-        &[(&[DataType::Binary, DataType::UInt32], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "ttext_rpad",
-        &[(&[DataType::Binary], DataType::Binary)],
+        &[(&[DataType::Binary, DataType::Int64], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -7711,18 +5540,13 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "ttext_shift",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "ttext_sequence_from_ewkt",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
-        "ttext_shortest_length",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "ttext_span",
-        &[(&[DataType::Binary], DataType::Binary)],
+        "ttext_sequence_new",
+        &[(&[DataType::Text], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -7736,27 +5560,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "ttext_starts_with",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
-        "ttext_substr",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
         "ttext_time_span",
-        &[(&[DataType::Binary], DataType::Binary)],
-    );
-    register_scalar(
-        conn,
-        "ttext_timestamp_n",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "ttext_timestamps",
         &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
@@ -7766,28 +5570,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "ttext_to_ewkt",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
         "ttext_to_json",
         &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "ttext_to_mfjson",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "ttext_total_char_count",
-        &[(&[DataType::Binary], DataType::Int64)],
-    );
-    register_scalar(
-        conn,
-        "ttext_trim",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -7796,23 +5580,8 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_scalar(
         conn,
-        "ttext_upper_inclusive",
-        &[(&[DataType::Binary], DataType::Boolean)],
-    );
-    register_scalar(
-        conn,
         "ttext_value_at",
         &[(&[DataType::Binary, DataType::Int64], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "ttext_value_n",
-        &[(&[DataType::Binary], DataType::Text)],
-    );
-    register_scalar(
-        conn,
-        "ttext_values",
-        &[(&[DataType::Binary], DataType::Binary)],
     );
     register_scalar(
         conn,
@@ -7850,37 +5619,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
             DataType::Float64,
         )],
     );
-    register_scalar(
-        conn,
-        "utm_epsg_for_point",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "utm_zone_for_point",
-        &[(&[DataType::Binary], DataType::Int32)],
-    );
-    register_scalar(
-        conn,
-        "web_mercator_to_wgs84_lat",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "web_mercator_to_wgs84_lon",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "wgs84_to_web_mercator_x",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    register_scalar(
-        conn,
-        "wgs84_to_web_mercator_y",
-        &[(&[DataType::Binary], DataType::Float64)],
-    );
-    // Generic dispatch: 1483 canonical + 0 alias scalars (1483 parameter-list overloads), all registered with their REAL param + return types.
+    // Generic dispatch: 1000 canonical + 0 alias scalars (1000 parameter-list overloads), all registered with their REAL param + return types.
 }
 
 /// Register one scalar (by canonical name or alias) as a function

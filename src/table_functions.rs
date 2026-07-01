@@ -146,28 +146,28 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_table_function(
         conn,
         "interval_tree_query_overlapping",
-        &[DataType::Binary, DataType::Int64, DataType::Int64],
+        &[DataType::Text, DataType::Int64, DataType::Int64],
     );
     register_table_function(
         conn,
         "interval_tree_query_point",
-        &[DataType::Binary, DataType::Int64],
+        &[DataType::Text, DataType::Int64],
     );
     register_table_function(
         conn,
         "kdtree_xy_nearest_k",
         &[
-            DataType::Binary,
+            DataType::Text,
             DataType::Float64,
             DataType::Float64,
-            DataType::Int32,
+            DataType::Int64,
         ],
     );
     register_table_function(
         conn,
         "kdtree_xy_within",
         &[
-            DataType::Binary,
+            DataType::Text,
             DataType::Float64,
             DataType::Float64,
             DataType::Float64,
@@ -177,18 +177,18 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "kdtree_xyz_nearest_k",
         &[
-            DataType::Binary,
+            DataType::Text,
             DataType::Float64,
             DataType::Float64,
             DataType::Float64,
-            DataType::Int32,
+            DataType::Int64,
         ],
     );
     register_table_function(
         conn,
         "kdtree_xyz_within",
         &[
-            DataType::Binary,
+            DataType::Text,
             DataType::Float64,
             DataType::Float64,
             DataType::Float64,
@@ -219,7 +219,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "octree_query_box",
         &[
-            DataType::Binary,
+            DataType::Text,
             DataType::Float64,
             DataType::Float64,
             DataType::Float64,
@@ -232,7 +232,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "octree_query_sphere",
         &[
-            DataType::Binary,
+            DataType::Text,
             DataType::Float64,
             DataType::Float64,
             DataType::Float64,
@@ -243,7 +243,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         conn,
         "quadtree_query_box",
         &[
-            DataType::Binary,
+            DataType::Text,
             DataType::Float64,
             DataType::Float64,
             DataType::Float64,
@@ -279,39 +279,24 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     );
     register_table_function(
         conn,
-        "stindex_nearest",
-        &[DataType::Binary, DataType::Float64, DataType::Float64],
-    ); // alias of spatial_index_nearest
-    register_table_function(
-        conn,
         "spatial_index_nearest_k",
         &[
             DataType::Binary,
             DataType::Float64,
             DataType::Float64,
-            DataType::Int32,
+            DataType::Int64,
         ],
     );
     register_table_function(
         conn,
-        "stindex_nearest_k",
-        &[
-            DataType::Binary,
-            DataType::Float64,
-            DataType::Float64,
-            DataType::Int32,
-        ],
-    ); // alias of spatial_index_nearest_k
-    register_table_function(
-        conn,
         "stindex_find_in_period",
-        &[DataType::Binary, DataType::Int64, DataType::Int64],
+        &[DataType::Text, DataType::Binary],
     );
     register_table_function(
         conn,
         "stindex_find_in_spatial",
         &[
-            DataType::Binary,
+            DataType::Text,
             DataType::Float64,
             DataType::Float64,
             DataType::Float64,
@@ -321,7 +306,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_table_function(
         conn,
         "stindex_find_in_stbox",
-        &[DataType::Binary, DataType::Binary],
+        &[DataType::Text, DataType::Binary],
     );
     register_table_function(conn, "tcbuffer_to_rows", &[DataType::Binary]);
     register_table_function(
@@ -393,7 +378,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
         &[DataType::Binary, DataType::Int64, DataType::Int64],
     );
     register_table_function(conn, "tpose_to_rows", &[DataType::Binary]);
-    // Phase 5: 43 canonical UDTFs + 2 alias registrations (0 wider positional overloads not expressible via the C API).
+    // Phase 5: 43 canonical UDTFs + 0 alias registrations (0 wider positional overloads not expressible via the C API).
 }
 
 unsafe fn register_table_function(
@@ -843,10 +828,8 @@ unsafe fn func_set_err(info: duckdb_function_info, msg: &str) {
 // udtf `spatial_index_find_in_envelope` (arity=5)
 // udtf `spatial_index_find_within_distance` (arity=4)
 // udtf `spatial_index_nearest` (arity=3)
-//   aliases: stindex_nearest
 // udtf `spatial_index_nearest_k` (arity=4)
-//   aliases: stindex_nearest_k
-// udtf `stindex_find_in_period` (arity=3)
+// udtf `stindex_find_in_period` (arity=2)
 // udtf `stindex_find_in_spatial` (arity=5)
 // udtf `stindex_find_in_stbox` (arity=2)
 // udtf `tcbuffer_to_rows` (arity=1)
