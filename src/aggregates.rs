@@ -58,11 +58,22 @@ struct AggExtraInfo {
 /// `conn` must be a valid `duckdb_connection` for the duration
 /// of this call.
 pub unsafe fn register_all(conn: duckdb_connection) {
+    register_aggregate(conn, "date_span_aggregate_union", "binary");
+    register_aggregate(conn, "float_span_aggregate_union", "binary");
+    register_aggregate(conn, "int_span_aggregate_union", "binary");
+    register_aggregate(conn, "tbigint_count_aggregate", "binary");
+    register_aggregate(conn, "tbigint_max_value_aggregate", "binary");
+    register_aggregate(conn, "tbigint_merge_agg", "binary");
+    register_aggregate(conn, "tbigint_min_value_aggregate", "binary");
+    register_aggregate(conn, "tbigint_range_aggregate", "binary");
+    register_aggregate(conn, "tbigint_sum_aggregate", "binary");
+    register_aggregate(conn, "tbool_merge_agg", "binary");
     register_aggregate(conn, "tbool_temporal_and", "binary");
     register_aggregate(conn, "tand", "binary"); // alias of tbool_temporal_and
     register_aggregate(conn, "tbool_temporal_or", "binary");
     register_aggregate(conn, "tor", "binary"); // alias of tbool_temporal_or
     register_aggregate(conn, "tcbuffer_temporal_count", "binary");
+    register_aggregate(conn, "tfloat_merge_agg", "binary");
     register_aggregate(conn, "tfloat_temporal_avg", "binary");
     register_aggregate(conn, "tavg", "binary"); // alias of tfloat_temporal_avg
     register_aggregate(conn, "tfloat_temporal_count", "binary");
@@ -75,28 +86,37 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_aggregate(conn, "tsum", "binary"); // alias of tfloat_temporal_sum
     register_aggregate(conn, "tfloat_total", "binary");
     register_aggregate(conn, "tfloat_variance_agg", "binary");
+    register_aggregate(conn, "tfloat_variance_aggregate", "binary");
+    register_aggregate(conn, "tgeogpoint_merge_agg", "binary");
     register_aggregate(conn, "tgeogpoint_temporal_count", "binary");
     register_aggregate(conn, "tgeompoint_centroid_agg", "binary");
-    register_aggregate(conn, "tgeompoint_num_convoys", "binary");
-    register_aggregate(conn, "tgeompoint_num_flocks", "binary");
-    register_aggregate(conn, "tgeompoint_num_meetings", "binary");
+    register_aggregate(conn, "tgeompoint_merge_agg", "binary");
     register_aggregate(conn, "tgeompoint_st_extent", "binary");
     register_aggregate(conn, "tgeompoint_temporal_centroid", "binary");
     register_aggregate(conn, "tgeompoint_temporal_count", "binary");
     register_aggregate(conn, "tint_count_agg", "binary");
+    register_aggregate(conn, "tint_count_aggregate", "binary");
     register_aggregate(conn, "tint_max_agg", "binary");
     register_aggregate(conn, "tint_max_value_agg", "binary");
+    register_aggregate(conn, "tint_max_value_aggregate", "binary");
+    register_aggregate(conn, "tint_merge_agg", "binary");
     register_aggregate(conn, "tint_min_agg", "binary");
     register_aggregate(conn, "tint_min_value_agg", "binary");
+    register_aggregate(conn, "tint_min_value_aggregate", "binary");
     register_aggregate(conn, "tint_range_agg", "binary");
+    register_aggregate(conn, "tint_range_aggregate", "binary");
     register_aggregate(conn, "tint_sum_agg", "binary");
     register_aggregate(conn, "tint_temporal_max", "binary");
     register_aggregate(conn, "tint_temporal_min", "binary");
     register_aggregate(conn, "tint_temporal_sum", "binary");
+    register_aggregate(conn, "tnpoint_merge_agg", "binary");
     register_aggregate(conn, "tnpoint_temporal_count", "binary");
     register_aggregate(conn, "tpose_temporal_count", "binary");
+    register_aggregate(conn, "tstz_span_aggregate_union", "binary");
     register_aggregate(conn, "ttext_concat_agg", "binary");
-    // Phase 3c: 31 canonical + 7 alias names registered.
+    register_aggregate(conn, "ttext_concat_aggregate", "binary");
+    register_aggregate(conn, "ttext_merge_agg", "binary");
+    // Phase 3c: 51 canonical + 7 alias names registered.
 }
 
 unsafe fn register_aggregate(conn: duckdb_connection, sql_name: &str, input_ty: &str) {
