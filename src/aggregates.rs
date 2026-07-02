@@ -116,6 +116,9 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_aggregate(conn, "tint_temporal_max", "binary");
     register_aggregate(conn, "tint_temporal_min", "binary");
     register_aggregate(conn, "tint_temporal_sum", "binary");
+    register_aggregate(conn, "tjsonb_sequences_agg_array", "binary");
+    register_aggregate(conn, "tjsonb_sequences_agg_concat", "binary");
+    register_aggregate(conn, "tjsonb_sequences_agg_merge_deep", "binary");
     register_aggregate(conn, "tnpoint_merge_agg", "binary");
     register_aggregate(conn, "tnpoint_temporal_count", "binary");
     register_aggregate(conn, "tpose_merge_agg", "binary");
@@ -125,7 +128,7 @@ pub unsafe fn register_all(conn: duckdb_connection) {
     register_aggregate(conn, "ttext_concat_agg", "binary");
     register_aggregate(conn, "ttext_concat_aggregate", "binary");
     register_aggregate(conn, "ttext_merge_agg", "binary");
-    // Phase 3c: 60 canonical + 7 alias names registered.
+    // Phase 3c: 63 canonical + 7 alias names registered.
 }
 
 unsafe fn register_aggregate(conn: duckdb_connection, sql_name: &str, input_ty: &str) {
