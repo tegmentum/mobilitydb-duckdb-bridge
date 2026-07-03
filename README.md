@@ -4,6 +4,12 @@ Generated DuckDB loadable extension that bridges the **mobilitydb** DataFission 
 
 Produced by [`ducklink-shim-codegen`](https://github.com/zacharywhitley/ducklink-shim-codegen) from a shim-interface SQLite database. **Do not edit by hand** — regenerate from the source.
 
+The upstream `mobilitydb-wasm` shim covers 100% of the wireable
+temporal surface — all six subsystem scaffolds (temporal,
+tjsonb-agg-ops, tile UDFs, structural merge/append, windowed
+aggregates, span union) are landed along with the recent
+correctness cascade closing 51 silent-bug fixes.
+
 ## Surface
 
 | Extension | Version | Scalars | Aggregates | UDTFs | Windows | Types | Operators | Casts | Preprocessors | Catalog | Indexes |
