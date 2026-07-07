@@ -2,7 +2,7 @@
 
 Generated DuckDB loadable extension that bridges the **mobilitydb** DataFission wasm shim into DuckDB as native scalar functions, aggregates, UDTFs, custom column types, and identity casts.
 
-Produced by [`ducklink-shim-codegen`](https://github.com/zacharywhitley/ducklink-shim-codegen) from a shim-interface SQLite database. **Do not edit by hand** — regenerate from the source.
+Produced by [`ducklink-shim-codegen`](https://github.com/tegmentum/ducklink-shim-codegen) from a shim-interface SQLite database. **Do not edit by hand** — regenerate from the source.
 
 The upstream `mobilitydb-wasm` shim covers 100% of the wireable
 temporal surface — all six subsystem scaffolds (temporal,
